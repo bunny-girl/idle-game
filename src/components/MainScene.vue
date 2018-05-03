@@ -2,18 +2,21 @@
   <div>
     <Coin></Coin>
     <Clicker></Clicker>
+    <status></status>
   </div>
 </template>
 
 <script>
   import Coin from './Coin.vue'
   import Clicker from './Clicker.vue'
+  import Status from './Status.vue'
 
   export default {
     name: 'HelloWorld',
     components: {
       Coin,
-      Clicker
+      Clicker,
+      Status,
     },
     data() {
       return {

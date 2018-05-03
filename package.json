@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "ls-sl": "git+https://github.com/bunny-girl/ls-sl.git",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

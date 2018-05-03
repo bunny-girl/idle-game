@@ -1,15 +1,18 @@
 <template>
   <p>
-    {{coin}}
+    {{coins}}
   </p>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+  import {mapGetters} from 'vuex'
+
   export default {
-    name : 'Coin',
-    computed : mapState([
-      'coin'
-    ])
+    name: 'Coin',
+    computed: {
+      ...mapGetters([
+        'coins'
+      ])
+    }
   }
 </script>

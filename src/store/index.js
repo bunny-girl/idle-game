@@ -1,15 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import skills from './modules/skills'
+import current from './modules/current'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    coin: 0
-  },
-  mutations: {
-    clicker_action(state) {
-      state.coin++
-    }
+  modules:{
+    skills,
+    current,
   }
 })
