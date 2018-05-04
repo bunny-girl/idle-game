@@ -1,42 +1,47 @@
 import Skill from '../../../api/Skill'
 
+let currentSkill;
+
 const state = {
   skills: [],
   current: '001',
 };
 
 const getters = {
-  allSkills: state => state.skills,
+  skillList: state => state.skills,
   currentSkillId: state => state.current,
-  // currentSkill : state => state.skills.find(item => item.id === state.current)
 };
 
 const mutations = {
-  setSkills(state, skills) {
-    state.skills = skills;
+  updateSkills(state) {
+    state.skills = Skill.getSkills();
+    currentSkill = state.skills.find(item => item.id === state.current);
   },
-  addStatusForSkill(state) {
-    let currentSkill = state.skills.find(item => item.id === state.current);
-    currentSkill.status++;
 
-    if (currentSkill.status >= currentSkill.max) {
-      // Skill
-    }
+  addMasteryForSkill(state) {
+    currentSkill.mastery++;
   },
+
   setCurrentSkill(state, skillId) {
     state.current = skillId;
-  }
+    currentSkill = state.skills.find(item => item.id === state.current);
+  },
 };
 
 const actions = {
-  getAllSkills({commit}) {
-    commit('setSkills', Skill.getSkills())
+  addMasteryForSkill({commit, state}){
+    commit('addMasteryForSkill');
+
+    if (currentSkill.max > 0 && currentSkill.mastery >= currentSkill.max) {
+      Skill.upgrade(state);
+      commit('updateSkills');
+    }
   }
 };
 
 export default {
   state,
-  actions,
   getters,
+  actions,
   mutations,
 }

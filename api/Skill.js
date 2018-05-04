@@ -1,13 +1,15 @@
+import ls from 'ls-sl'
+
 const _skills = [
   {
     id: '001',
     level: 0,
-    status: 0,
+    mastery: 0,
   },
   {
     id: '002',
     level: 0,
-    status: 0,
+    mastery: 0,
   }
 ];
 
@@ -22,7 +24,7 @@ const _skill_data = {
         unlock: {}
       },
       {
-        max: 20,
+        max: -1,
         addition: 2,
         multi: 0.1,
         unlock: {}
@@ -39,7 +41,7 @@ const _skill_data = {
         unlock: {}
       },
       {
-        max: 22,
+        max: -1,
         addition: 2,
         multi: 0.1,
         unlock: {}
@@ -48,15 +50,17 @@ const _skill_data = {
   },
 };
 
+let currentSkills;
+
 const getSkills = () => {
-  return _skills.map(s => {
+  currentSkills = _skills.map(s => {
     let cloned;
     let {name, data} = _skill_data[s.id];
     let levelData = data[s.level];
     cloned = {
       id : s.id,
       level : s.level,
-      status : s.status,
+      mastery : s.mastery,
       name,
       max : levelData.max,
       addition : levelData.addition,
@@ -64,11 +68,35 @@ const getSkills = () => {
     };
     return cloned;
   });
+  return currentSkills;
+};
+
+const calc = () => {
+  let res = {
+    addition : 0,
+    multi : 0,
+  };
+
+  currentSkills.map(({addition, multi}) => {
+    res.addition += parseInt(addition) || 0;
+    res.multi += parseInt(multi) || 0;
+  });
+  return res;
 };
 
 const initData = (data, cb) => {};
 
+const upgrade = ({skills, current}) => {
+  let currentSkill = skills.find(({id}) => id === current);
+  let currentSkillState = _skills.find(({id}) => id === current);
+  currentSkill.mastery -= currentSkill.max;
+  currentSkillState.mastery = currentSkill.mastery;
+  currentSkillState.level ++;
+};
+
 export default {
   getSkills,
   initData,
+  upgrade,
+  calc,
 }

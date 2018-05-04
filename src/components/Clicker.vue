@@ -9,7 +9,7 @@
     methods : {
       click_action(){
         this.$store.commit('clicker_action');
-        this.$store.commit('addStatusForSkill');
+        this.$store.dispatch('addMasteryForSkill');
       }
     }
   }

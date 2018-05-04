@@ -2,21 +2,21 @@
   <div>
     <Coin></Coin>
     <Clicker></Clicker>
-    <status></status>
+    <SkillStatus></SkillStatus>
   </div>
 </template>
 
 <script>
   import Coin from './Coin.vue'
   import Clicker from './Clicker.vue'
-  import Status from './Status.vue'
+  import SkillStatus from './SkillStatus.vue'
 
   export default {
     name: 'HelloWorld',
     components: {
       Coin,
       Clicker,
-      Status,
+      SkillStatus,
     },
     data() {
       return {

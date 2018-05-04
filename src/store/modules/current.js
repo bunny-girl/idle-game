@@ -4,7 +4,7 @@ const state = {
 
 const getters = {
   coins : state => state.coin
-  // allSkills : state => state.skills
+  // skillList : state => state.skills
 };
 
 const mutations = {
