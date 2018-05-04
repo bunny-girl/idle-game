@@ -26,7 +26,7 @@ const _skill_data = {
         addition: 2,
         multi: 0.1,
         unlock: {}
-      }
+      },
     ]
   },
   '002': {
