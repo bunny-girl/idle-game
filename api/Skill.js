@@ -1,5 +1,3 @@
-import ls from 'ls-sl'
-
 const _skills = [
   {
     id: '001',
@@ -15,36 +13,42 @@ const _skills = [
 
 const _skill_data = {
   '001': {
-    name : 'Skill 01',
+    name: 'Skill 01',
     data: [
       {
         max: 5,
         addition: 0,
         multi: 0,
-        unlock: {}
+        unlock: {},
+        cost : 5,
+        title: '新手'
       },
       {
         max: -1,
         addition: 2,
         multi: 0.1,
-        unlock: {}
+        unlock: {},
+        title: '入门'
       },
     ]
   },
   '002': {
-    name : 'Skill 02',
+    name: 'Skill 02',
     data: [
       {
         max: 5,
         addition: 0,
         multi: 0,
-        unlock: {}
+        unlock: {},
+        cost: 20,
+        title: '新手'
       },
       {
         max: -1,
         addition: 2,
         multi: 0.1,
-        unlock: {}
+        unlock: {},
+        title: '入门'
       }
     ]
   },
@@ -58,13 +62,16 @@ const getSkills = () => {
     let {name, data} = _skill_data[s.id];
     let levelData = data[s.level];
     cloned = {
-      id : s.id,
-      level : s.level,
-      mastery : s.mastery,
+      id: s.id,
+      level: s.level,
+      mastery: s.mastery,
       name,
-      max : levelData.max,
-      addition : levelData.addition,
-      multi : levelData.multi,
+      max: levelData.max,
+      addition: levelData.addition,
+      multi: levelData.multi,
+      title: levelData.title,
+      readyForUpgrade: s.mastery >= levelData.max && levelData.max > 0,
+      cost:  levelData.cost,
     };
     return cloned;
   });
@@ -73,8 +80,8 @@ const getSkills = () => {
 
 const getSkillPower = () => {
   let res = {
-    addition : 0,
-    multi : 0,
+    addition: 0,
+    multi: 0,
   };
 
   currentSkills.map(({addition, multi}) => {
@@ -84,9 +91,10 @@ const getSkillPower = () => {
   return res;
 };
 
-const initData = (data, cb) => {};
+const initData = (data, cb) => {
+};
 
-const upgrade = ({skills, current}) => {
+const upgrade = (skills, current) => {
   _skills.forEach(skill => {
     let tempSkill = skills.find(({id}) => id === skill.id);
     skill.mastery = tempSkill.mastery;
@@ -96,7 +104,7 @@ const upgrade = ({skills, current}) => {
   let currentSkillState = _skills.find(({id}) => id === current);
   currentSkill.mastery -= currentSkill.max;
   currentSkillState.mastery = currentSkill.mastery;
-  currentSkillState.level ++;
+  currentSkillState.level++;
 };
 
 export default {

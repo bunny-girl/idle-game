@@ -26,17 +26,28 @@ const mutations = {
     state.current = skillId;
     currentSkill = state.skills.find(item => item.id === state.current);
   },
+
+  couldUpgrade(state) {
+    currentSkill.readyForUpgrade = true;
+  }
 };
 
 const actions = {
-  addMasteryForSkill({commit, state}){
-    commit('addMasteryForSkill');
+  addMasteryForSkill({commit, state}) {
+    if(!currentSkill.readyForUpgrade){
+      commit('addMasteryForSkill');
 
-    if (currentSkill.max > 0 && currentSkill.mastery >= currentSkill.max) {
-      Skill.upgrade(state);
-      commit('updateSkills');
-      commit('updatePower');
+      if (currentSkill.max > 0 && currentSkill.mastery >= currentSkill.max) {
+        commit('couldUpgrade');
+      }
     }
+  },
+
+  upgradeSkill({commit, state}, skill){
+    commit('costCoins', skill.cost);
+    Skill.upgrade(state.skills, skill.id);
+    commit('updateSkills');
+    commit('updatePower');
   }
 };
 

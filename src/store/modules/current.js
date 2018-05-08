@@ -20,8 +20,13 @@ const mutations = {
     let power = Status.getTotalPower();
     state.click = power.click;
     state.auto = power.auto;
+  },
+  costCoins(state, cost){
+    state.coin -= cost;
   }
 };
+
+const actions = {};
 
 export default {
   state,
