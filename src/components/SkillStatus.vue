@@ -23,9 +23,6 @@
       ...mapMutations([
         'setCurrentSkill'
       ])
-    },
-    created() {
-      this.$store.commit('updateSkills');
     }
   }
 </script>

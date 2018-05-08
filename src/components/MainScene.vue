@@ -2,6 +2,7 @@
   <div>
     <Coin></Coin>
     <Clicker></Clicker>
+    <status></status>
     <SkillStatus></SkillStatus>
   </div>
 </template>
@@ -10,6 +11,7 @@
   import Coin from './Coin.vue'
   import Clicker from './Clicker.vue'
   import SkillStatus from './SkillStatus.vue'
+  import Status from './Status.vue'
 
   export default {
     name: 'HelloWorld',
@@ -17,11 +19,16 @@
       Coin,
       Clicker,
       SkillStatus,
+      Status,
     },
     data() {
       return {
         msg: 'Welcome to Your Vue.js App',
       }
+    },
+    created() {
+      this.$store.commit('updateSkills');
+      this.$store.commit('updatePower');
     }
   }
 </script>

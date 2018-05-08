@@ -35,6 +35,7 @@ const actions = {
     if (currentSkill.max > 0 && currentSkill.mastery >= currentSkill.max) {
       Skill.upgrade(state);
       commit('updateSkills');
+      commit('updatePower');
     }
   }
 };

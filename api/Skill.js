@@ -18,7 +18,7 @@ const _skill_data = {
     name : 'Skill 01',
     data: [
       {
-        max: 10,
+        max: 5,
         addition: 0,
         multi: 0,
         unlock: {}
@@ -35,7 +35,7 @@ const _skill_data = {
     name : 'Skill 02',
     data: [
       {
-        max: 11,
+        max: 5,
         addition: 0,
         multi: 0,
         unlock: {}
@@ -71,7 +71,7 @@ const getSkills = () => {
   return currentSkills;
 };
 
-const calc = () => {
+const getSkillPower = () => {
   let res = {
     addition : 0,
     multi : 0,
@@ -87,6 +87,11 @@ const calc = () => {
 const initData = (data, cb) => {};
 
 const upgrade = ({skills, current}) => {
+  _skills.forEach(skill => {
+    let tempSkill = skills.find(({id}) => id === skill.id);
+    skill.mastery = tempSkill.mastery;
+    skill.level = tempSkill.level;
+  });
   let currentSkill = skills.find(({id}) => id === current);
   let currentSkillState = _skills.find(({id}) => id === current);
   currentSkill.mastery -= currentSkill.max;
@@ -98,5 +103,5 @@ export default {
   getSkills,
   initData,
   upgrade,
-  calc,
+  getSkillPower,
 }
