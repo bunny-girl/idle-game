@@ -6,6 +6,11 @@
       <button v-show="skill.readyForUpgrade" @click="upgradeSkill(skill)"
               :disabled="skill.cost > coin">Upgrade - {{skill.cost}}
       </button>
+      <br/>
+      <span v-for="ability in skill.abilities">
+        {{ability}},
+      </span>
+      <span>合计 {{skill.masteryAddition}} 点熟练度加成。</span>
     </li>
   </ul>
 </template>

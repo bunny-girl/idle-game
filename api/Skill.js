@@ -1,3 +1,5 @@
+import Ability from './Abilily'
+
 const _skills = [
   {
     id: '001',
@@ -14,13 +16,16 @@ const _skills = [
 const _skill_data = {
   '001': {
     name: 'Skill 01',
+    abilities: [
+      '001', '003'
+    ],
     data: [
       {
         max: 5,
         addition: 0,
         multi: 0,
         unlock: {},
-        cost : 5,
+        cost: 5,
         title: '新手'
       },
       {
@@ -34,6 +39,9 @@ const _skill_data = {
   },
   '002': {
     name: 'Skill 02',
+    abilities: [
+      '001', '002'
+    ],
     data: [
       {
         max: 5,
@@ -59,8 +67,11 @@ let currentSkills;
 const getSkills = () => {
   currentSkills = _skills.map(s => {
     let cloned;
-    let {name, data} = _skill_data[s.id];
+    let {name, data, abilities} = _skill_data[s.id];
     let levelData = data[s.level];
+
+    let {nameArr: abilityList, masteryAddition} = Ability.getAbilityDetail(abilities);
+
     cloned = {
       id: s.id,
       level: s.level,
@@ -71,7 +82,9 @@ const getSkills = () => {
       multi: levelData.multi,
       title: levelData.title,
       readyForUpgrade: s.mastery >= levelData.max && levelData.max > 0,
-      cost:  levelData.cost,
+      cost: levelData.cost,
+      abilities: abilityList,
+      masteryAddition,
     };
     return cloned;
   });

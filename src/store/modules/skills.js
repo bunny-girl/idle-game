@@ -1,6 +1,6 @@
 import Skill from '../../../api/Skill'
 
-let currentSkill;
+let currentSkill, masteryAddition;
 
 const state = {
   skills: [],
@@ -19,7 +19,7 @@ const mutations = {
   },
 
   addMasteryForSkill(state) {
-    currentSkill.mastery++;
+    currentSkill.mastery += currentSkill.masteryAddition;
   },
 
   setCurrentSkill(state, skillId) {

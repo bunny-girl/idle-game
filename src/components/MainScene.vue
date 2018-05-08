@@ -4,6 +4,7 @@
     <Clicker></Clicker>
     <status></status>
     <SkillStatus></SkillStatus>
+    <ability-status></ability-status>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
   import Clicker from './Clicker.vue'
   import SkillStatus from './SkillStatus.vue'
   import Status from './Status.vue'
+  import AbilityStatus from './AbilityStatus.vue'
 
   export default {
     name: 'HelloWorld',
@@ -20,6 +22,7 @@
       Clicker,
       SkillStatus,
       Status,
+      AbilityStatus,
     },
     data() {
       return {
@@ -28,6 +31,7 @@
     },
     created() {
       this.$store.commit('updateSkills');
+      this.$store.commit('updateAbilities');
       this.$store.commit('updatePower');
     }
   }
