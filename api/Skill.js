@@ -84,6 +84,7 @@ const getSkills = () => {
       readyForUpgrade: s.mastery >= levelData.max && levelData.max > 0,
       cost: levelData.cost,
       abilities: abilityList,
+      abilityId : abilities,
       masteryAddition,
     };
     return cloned;
