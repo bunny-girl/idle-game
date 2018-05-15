@@ -24,18 +24,24 @@ const actions = {
     let {level, abilityId, readyForUpgrade} = skills.find(item => item.id === current) || {level : 0, abilityId : []};
 
     if(readyForUpgrade === false){
-      //
 
+      let upgradeAbilities = [];
       state.abilities.forEach(a => {
         if(abilityId.includes(a.id)){
           a.mastery += level + 1;
 
           if(a.mastery >= a.max){
-            Ability.upgrade(state.abilities, a.id);
-            commit('updateAbilities');
+            upgradeAbilities.push(a.id);
+            // Ability.upgrade(state.abilities, a.id);
           }
         }
       });
+      if(upgradeAbilities.length > 0){
+        upgradeAbilities.map(a => {
+          Ability.upgrade(state.abilities, a);
+        });
+        commit('updateAbilities');
+      }
     }
 
   }

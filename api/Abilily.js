@@ -63,6 +63,7 @@ const upgrade = (abilities, current) => {
     a.mastery = tempAbility.mastery;
     a.level = tempAbility.level;
   });
+  console.log(current);
   let currentAbility = abilities.find(({id}) => id === current);
   let currentAbilityState = _ability.find(({id}) => id === current);
   currentAbility.mastery -= currentAbility.max;

@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="ability in abilities">
-      <span @click="setCurrentSkill(ability.id)">{{ability.name}}</span> : {{ability.mastery}} / {{ability.max}}
+      <span>{{ability.name}}</span> : {{ability.mastery}} / {{ability.max}}
     </li>
   </ul>
 </template>
