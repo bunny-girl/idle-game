@@ -1,5 +1,5 @@
 <template>
-  <button @click="click_action">Click</button>
+  <el-button @click="click_action" type="primary">干活</el-button>
 </template>
 
 <script>

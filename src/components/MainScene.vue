@@ -1,11 +1,25 @@
 <template>
-  <div>
-    <Coin></Coin>
-    <Clicker></Clicker>
-    <status></status>
-    <SkillStatus></SkillStatus>
-    <ability-status></ability-status>
-  </div>
+  <el-row>
+    <el-col :span="12">
+      <div class="grid-content bg-purple">
+        <Coin></Coin>
+        <Clicker></Clicker>
+        <status></status>
+      </div>
+    </el-col>
+    <el-col :span="12">
+      <div class="grid-content bg-purple-light">
+        <el-tabs type="border-card">
+          <el-tab-pane label="技能">
+            <SkillStatus></SkillStatus>
+          </el-tab-pane>
+          <el-tab-pane label="属性">
+            <ability-status></ability-status>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
