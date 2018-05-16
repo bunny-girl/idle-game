@@ -1,7 +1,7 @@
 import Ability from '../../../api/Abilily'
 
 const state = {
-  abilities : [],
+  abilities: [],
 };
 
 const getters = {
@@ -12,34 +12,27 @@ const mutations = {
   updateAbilities(state) {
     state.abilities = Ability.getAbilities();
   },
-
-  // addMasteryForAbility(state, ) {
-  //
-  // }
 };
 
 const actions = {
-  addMasteryForAbility({state, commit, rootState}){
+  addMasteryForAbility({state, commit, rootState}) {
     let {skills, current} = rootState.skills;
-    let {level, abilityId, readyForUpgrade} = skills.find(item => item.id === current) || {level : 0, abilityId : []};
+    let {level, abilityId, readyForUpgrade} = skills.find(item => item.id === current) || {level: 0, abilityId: []};
 
-    if(readyForUpgrade === false){
+    if (readyForUpgrade === false) {
 
-      let upgradeAbilities = [];
+      let shallUpgrade = false;
       state.abilities.forEach(a => {
-        if(abilityId.includes(a.id)){
+        if (abilityId.includes(a.id)) {
           a.mastery += level + 1;
 
-          if(a.mastery >= a.max){
-            upgradeAbilities.push(a.id);
-            // Ability.upgrade(state.abilities, a.id);
+          if (a.mastery >= a.max) {
+            shallUpgrade = true;
           }
         }
       });
-      if(upgradeAbilities.length > 0){
-        upgradeAbilities.map(a => {
-          Ability.upgrade(state.abilities, a);
-        });
+      if (shallUpgrade) {
+        Ability.upgrade(state.abilities);
         commit('updateAbilities');
       }
     }

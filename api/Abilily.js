@@ -57,18 +57,19 @@ const getAbilities = () => {
   })
 };
 
-const upgrade = (abilities, current) => {
+const upgrade = (abilities) => {
   _ability.forEach(a => {
     let tempAbility = abilities.find(({id}) => id === a.id);
     a.mastery = tempAbility.mastery;
-    a.level = tempAbility.level;
+    console.log(a.mastery);
+    console.log(tempAbility.max);
+    if(a.mastery >= tempAbility.max){
+      a.mastery -= tempAbility.max;
+      a.level = tempAbility.level + 1;
+    }else{
+      a.level = tempAbility.level;
+    }
   });
-  console.log(current);
-  let currentAbility = abilities.find(({id}) => id === current);
-  let currentAbilityState = _ability.find(({id}) => id === current);
-  currentAbility.mastery -= currentAbility.max;
-  currentAbilityState.mastery = currentAbility.mastery;
-  currentAbilityState.level++;
 };
 
 export default {

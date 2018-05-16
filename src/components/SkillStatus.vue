@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="skill in skills">
-      <el-progress :percentage="Math.round(skill.mastery / skill.max * 100)" :show-text="false"
+      <el-progress :percentage="skill.max > 0 ? Math.round(skill.mastery / skill.max * 100) : 100" :show-text="false"
                    :status="skill.readyForUpgrade ? 'success' : ''"></el-progress>
       <span v-show="skill.id === currentSkill">&gt;</span>
       <span @click="setCurrentSkill(skill.id)">{{skill.name}}</span> : {{skill.mastery}} / {{skill.max}}

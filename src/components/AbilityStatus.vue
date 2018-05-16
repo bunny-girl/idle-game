@@ -1,7 +1,8 @@
 <template>
   <ul>
     <li v-for="ability in abilities">
-      <span>{{ability.name}}</span> : {{ability.mastery}} / {{ability.max}}
+      <el-progress :percentage="Math.round(ability.mastery / ability.max * 100)" :show-text="false"></el-progress>
+      <span>{{ability.name}} @ {{ability.level + 1}}</span> : {{ability.mastery}} / {{ability.max}}
     </li>
   </ul>
 </template>
@@ -20,3 +21,7 @@
     methods: {}
   }
 </script>
+
+<style>
+
+</style>
