@@ -13,17 +13,33 @@ const _ability = [
     id: '003',
     level: 0,
     mastery: 0,
+  },
+  {
+    id: '004',
+    level: 0,
+    mastery: 0,
+  },
+  {
+    id: '005',
+    level: 0,
+    mastery: 0,
   }
 ];
 
 const _ability_data = {
   '001': {
-    name: 'Ability 01'
+    name: '驾驶'
   },
   '002': {
-    name: 'Ability 02'
+    name: '守时'
   },
   '003': {
+    name: '细心'
+  },
+  '004': {
+    name: '厨艺'
+  },
+  '005': {
     name: 'Ability 03'
   },
 };

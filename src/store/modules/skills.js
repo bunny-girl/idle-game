@@ -46,7 +46,7 @@ const actions = {
   },
 
   addMasteryForSkillAuto({commit, state, dispatch}) {
-    if(Math.random() > AUTO_FACTOR){
+    if(Math.random() < AUTO_FACTOR){
       dispatch('addMasteryForSkill');
     }else{
       //do nothing.

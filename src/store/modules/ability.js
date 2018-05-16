@@ -8,6 +8,10 @@ const AUTO_FACTOR = 0.1;
 
 const getters = {
   abilities: state => state.abilities,
+  getAbilityById: (state) => (id) => {
+    console.log(id);
+    return state.abilities.find(a => a.id === id)
+  }
 };
 
 const mutations = {
@@ -19,13 +23,13 @@ const mutations = {
 const actions = {
   addMasteryForAbility({state, commit, rootState}) {
     let {skills, current} = rootState.skills;
-    let {level, abilityId, readyForUpgrade} = skills.find(item => item.id === current) || {level: 0, abilityId: []};
+    let {level, abilities, readyForUpgrade} = skills.find(item => item.id === current) || {level: 0, abilityId: []};
 
     if (readyForUpgrade === false) {
 
       let shallUpgrade = false;
       state.abilities.forEach(a => {
-        if (abilityId.includes(a.id)) {
+        if (abilities.includes(a.id)) {
           a.mastery += level + 1;
 
           if (a.mastery >= a.max) {
@@ -40,9 +44,9 @@ const actions = {
     }
   },
   addMasteryForAbilityAuto({dispatch}) {
-    if(Math.random() > AUTO_FACTOR){
+    if (Math.random() < AUTO_FACTOR) {
       dispatch('addMasteryForAbility');
-    }else{
+    } else {
       //do nothing.
     }
   }

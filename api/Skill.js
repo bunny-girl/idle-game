@@ -10,14 +10,19 @@ const _skills = [
     id: '002',
     level: 0,
     mastery: 0,
+  },
+  {
+    id: '003',
+    level: 0,
+    mastery: 0,
   }
 ];
 
 const _skill_data = {
   '001': {
-    name: 'Skill 01',
+    name: '送餐员',
     abilities: [
-      '001', '003'
+      '001', '002',
     ],
     data: [
       {
@@ -26,6 +31,29 @@ const _skill_data = {
         multi: 0,
         unlock: {},
         cost: 5,
+        title: '骑手'
+      },
+      {
+        max: -1,
+        addition: 2,
+        multi: 0.1,
+        unlock: {},
+        title: '优秀骑手'
+      },
+    ]
+  },
+  '002': {
+    name: '清洁工',
+    abilities: [
+      '003'
+    ],
+    data: [
+      {
+        max: 5,
+        addition: 0,
+        multi: 0,
+        unlock: {},
+        cost: 20,
         title: '新手'
       },
       {
@@ -34,13 +62,13 @@ const _skill_data = {
         multi: 0.1,
         unlock: {},
         title: '入门'
-      },
+      }
     ]
   },
-  '002': {
-    name: 'Skill 02',
+  '003': {
+    name: '早餐摊',
     abilities: [
-      '001', '002'
+      '004'
     ],
     data: [
       {
@@ -83,8 +111,8 @@ const getSkills = () => {
       title: levelData.title,
       readyForUpgrade: s.mastery >= levelData.max && levelData.max > 0,
       cost: levelData.cost,
-      abilities: abilityList,
-      abilityId : abilities,
+      abilityList,
+      abilities,
       masteryAddition,
     };
     return cloned;

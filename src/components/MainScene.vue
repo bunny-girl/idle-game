@@ -16,6 +16,9 @@
           <el-tab-pane label="属性">
             <ability-status></ability-status>
           </el-tab-pane>
+          <el-tab-pane label="公司">
+            建设中
+          </el-tab-pane>
         </el-tabs>
       </div>
     </el-col>
@@ -38,11 +41,6 @@
       Status,
       AbilityStatus,
     },
-    data() {
-      return {
-        msg: 'Welcome to Your Vue.js App',
-      }
-    },
     created() {
       this.$store.commit('updateSkills');
       this.$store.commit('updateAbilities');
@@ -50,24 +48,3 @@
     }
   }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
-</style>
