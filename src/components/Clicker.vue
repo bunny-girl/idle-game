@@ -48,7 +48,6 @@
         }
       },
       autoInc() {
-        console.log(this);
         this.$store.commit('clicker_action_auto');
         this.$store.dispatch('addMasteryForAbilityAuto');
         this.$store.dispatch('addMasteryForSkillAuto');

@@ -1,21 +1,23 @@
-# idel_career
+Idle Clicker Game
 
-> A Vue.js project
+---
 
-## Build Setup
+This is an idle game in which you play as a normal worker, start from basic work and skills, grow to a scholar or manager, or pick up your heirs to inherit your career.
 
-``` bash
-# install dependencies
-npm install
+---
 
-# serve with hot reload at localhost:8080
-npm run dev
+Developed using Vue.
+Current copy is in Chinese but will switch to EN/CN version once I have finished another core play mechanic.
 
-# build for production with minification
-npm run build
+---
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+TODO:
+[ ] UI Enhancement
+[ ] Numeric Design Wave 1
+[ ] Split the config file apart from the static files
+[ ] Save/Load Integrate
+[ ] Make a generator to compile from .csv to json
+[ ] Achievement Design
+[ ] Company System
+[ ] School System
+[ ] Heir System
