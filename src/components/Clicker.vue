@@ -1,16 +1,57 @@
 <template>
-  <el-button @click="click_action" type="primary">干活</el-button>
+  <p>
+    <el-button @click="click_action" type="primary" :disabled="isAuto">干活</el-button>
+    <el-switch
+      style="display: block"
+      v-model="isAuto"
+      active-color="#13ce66"
+      :disabled="auto<0.1"
+      active-text="开启"
+      @change="checkStatus"
+      inactive-text="关闭">
+    </el-switch>
+  </p>
 </template>
 
 <script>
-  import {mapMutations, mapGetters} from 'vuex'
+  import {mapGetters} from 'vuex'
+
+  let autoTimer;
+
   export default {
-    name : 'Clicker',
-    methods : {
-      click_action(){
+    name: 'Clicker',
+    data() {
+      return {
+        isAuto: false
+      }
+    },
+    computed: {
+      ...
+        mapGetters([
+          'click',
+          'auto',
+        ])
+    },
+    methods: {
+      click_action() {
         this.$store.commit('clicker_action');
         this.$store.dispatch('addMasteryForAbility');
         this.$store.dispatch('addMasteryForSkill');
+      },
+      checkStatus() {
+        if (this.isAuto) {
+          autoTimer = setInterval(() => {
+            this.autoInc()
+          }, 1000);
+        } else {
+          clearInterval(autoTimer)
+        }
+      },
+      autoInc() {
+        console.log(this);
+        this.$store.commit('clicker_action_auto');
+        this.$store.dispatch('addMasteryForAbilityAuto');
+        this.$store.dispatch('addMasteryForSkillAuto');
       }
     }
   }

@@ -4,6 +4,8 @@ const state = {
   abilities: [],
 };
 
+const AUTO_FACTOR = 0.1;
+
 const getters = {
   abilities: state => state.abilities,
 };
@@ -36,7 +38,13 @@ const actions = {
         commit('updateAbilities');
       }
     }
-
+  },
+  addMasteryForAbilityAuto({dispatch}) {
+    if(Math.random() > AUTO_FACTOR){
+      dispatch('addMasteryForAbility');
+    }else{
+      //do nothing.
+    }
   }
 };
 

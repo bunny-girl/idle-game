@@ -15,6 +15,11 @@ const getters = {
 const mutations = {
   clicker_action(state) {
     state.coin += state.click;
+    state.coin = Math.round(state.coin * 100) / 100;
+  },
+  clicker_action_auto(state) {
+    state.coin += state.auto;
+    state.coin = Math.round(state.coin * 100) / 100;
   },
   updatePower(state){
     let power = Status.getTotalPower();

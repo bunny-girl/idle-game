@@ -2,6 +2,8 @@ import Skill from '../../../api/Skill'
 
 let currentSkill, masteryAddition;
 
+const AUTO_FACTOR = 0.1;
+
 const state = {
   skills: [],
   current: '001',
@@ -40,6 +42,14 @@ const actions = {
       if (currentSkill.max > 0 && currentSkill.mastery >= currentSkill.max) {
         commit('couldUpgrade');
       }
+    }
+  },
+
+  addMasteryForSkillAuto({commit, state, dispatch}) {
+    if(Math.random() > AUTO_FACTOR){
+      dispatch('addMasteryForSkill');
+    }else{
+      //do nothing.
     }
   },
 
