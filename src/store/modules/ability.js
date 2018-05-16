@@ -9,7 +9,6 @@ const AUTO_FACTOR = 0.1;
 const getters = {
   abilities: state => state.abilities,
   getAbilityById: (state) => (id) => {
-    console.log(id);
     return state.abilities.find(a => a.id === id)
   }
 };

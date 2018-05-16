@@ -5,6 +5,7 @@
         <el-col :span="3">
           <span v-show="skill.id === currentSkill">&gt;</span>
           <span @click="setCurrentSkill(skill.id)">{{skill.name}}</span>
+          <!--<span>{{isLocked}}</span>-->
         </el-col>
         <el-col :span="19">
           <el-progress
@@ -24,11 +25,8 @@
         [{{skill.title}}] : {{skill.mastery}} / {{skill.max}}
       </p>
       <p>
-        <span v-for="ability in skill.abilities">
-          <ability-tag :ability-id="ability"></ability-tag>
-        <!--<el-tag type="info">{{ability}}</el-tag>-->
-      </span>
-        <span>合计 {{skill.masteryAddition}} 点熟练度加成。</span>
+        <ability-tag :ability-id="ability" v-for="ability in skill.abilities" :key="ability"></ability-tag>
+        <!--<span>合计 {{skill.masteryAddition}} 点熟练度加成。</span>-->
       </p>
       <!--<button>Upgrade - {{skill.cost}}-->
       <hr>
@@ -49,7 +47,10 @@
           skills: 'skillList',
           currentSkill: 'currentSkillId',
           coin: 'coins',
-        })
+        }),
+      isLocked () {
+        return false;
+      }
     },
     methods: {
       ...mapMutations([

@@ -29,7 +29,6 @@ const _skill_data = {
         max: 5,
         addition: 0,
         multi: 0,
-        unlock: {},
         cost: 5,
         title: '骑手'
       },
@@ -37,13 +36,13 @@ const _skill_data = {
         max: -1,
         addition: 2,
         multi: 0.1,
-        unlock: {},
         title: '优秀骑手'
       },
-    ]
+    ],
+    unlock: {},
   },
   '002': {
-    name: '清洁工',
+    name: '早餐店',
     abilities: [
       '003'
     ],
@@ -52,7 +51,6 @@ const _skill_data = {
         max: 5,
         addition: 0,
         multi: 0,
-        unlock: {},
         cost: 20,
         title: '新手'
       },
@@ -60,22 +58,21 @@ const _skill_data = {
         max: -1,
         addition: 2,
         multi: 0.1,
-        unlock: {},
         title: '入门'
       }
-    ]
+    ],
+    unlock: {},
   },
   '003': {
-    name: '早餐摊',
+    name: '餐厅',
     abilities: [
-      '004'
+      '003'
     ],
     data: [
       {
         max: 5,
         addition: 0,
         multi: 0,
-        unlock: {},
         cost: 20,
         title: '新手'
       },
@@ -83,10 +80,16 @@ const _skill_data = {
         max: -1,
         addition: 2,
         multi: 0.1,
-        unlock: {},
         title: '入门'
       }
-    ]
+    ],
+    unlock: {
+      ability : {
+        '003' : {
+          level : 2
+        }
+      }
+    },
   },
 };
 
@@ -95,10 +98,10 @@ let currentSkills;
 const getSkills = () => {
   currentSkills = _skills.map(s => {
     let cloned;
-    let {name, data, abilities} = _skill_data[s.id];
+    let {name, data, abilities, unlock} = _skill_data[s.id];
     let levelData = data[s.level];
 
-    let {nameArr: abilityList, masteryAddition} = Ability.getAbilityDetail(abilities);
+    let {masteryAddition} = Ability.getAbilityDetail(abilities);
 
     cloned = {
       id: s.id,
@@ -111,9 +114,9 @@ const getSkills = () => {
       title: levelData.title,
       readyForUpgrade: s.mastery >= levelData.max && levelData.max > 0,
       cost: levelData.cost,
-      abilityList,
       abilities,
       masteryAddition,
+      unlock,
     };
     return cloned;
   });
