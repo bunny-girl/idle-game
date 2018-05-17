@@ -11,7 +11,7 @@
       <div class="grid-content bg-purple-light">
         <el-tabs type="border-card">
           <el-tab-pane label="技能">
-            <SkillStatus></SkillStatus>
+            <skill-panel></skill-panel>
           </el-tab-pane>
           <el-tab-pane label="属性">
             <ability-status></ability-status>
@@ -28,7 +28,7 @@
 <script>
   import Coin from './Coin.vue'
   import Clicker from './Clicker.vue'
-  import SkillStatus from './SkillStatus.vue'
+  import SkillPanel from './SkillPanel.vue'
   import Status from './Status.vue'
   import AbilityStatus from './AbilityStatus.vue'
 
@@ -37,7 +37,7 @@
     components: {
       Coin,
       Clicker,
-      SkillStatus,
+      SkillPanel,
       Status,
       AbilityStatus,
     },

@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@vuikit/icons": "^0.8.1",
     "element-ui": "^2.3.8",
     "lodash": "^4.17.10",
     "ls-sl": "git+https://github.com/bunny-girl/ls-sl.git",
