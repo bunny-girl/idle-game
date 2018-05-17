@@ -1,10 +1,11 @@
 <template>
   <div :class="isCurrent ? 'currentSkill' : ''" @click="setCurrentSkill(skill.id)">
+    <div class="popover" v-show="isLocked"></div>
     <el-row align="middle" type="flex">
       <el-col :span="3">
         <!--<icon-play v-show="isCurrent"></icon-play>-->
         <i class="el-icon-refresh" v-show="isCurrent"></i>
-        <i class="el-icon-delete" v-show="isLocked"></i>
+        <!--<i class="el-icon-delete" v-show="isLocked"></i>-->
         <span>{{skill.name}}</span>
         <!--<span>{{isLocked}}</span>-->
       </el-col>
@@ -94,3 +95,16 @@
     }
   }
 </script>
+<style>
+  .popover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+</style>
