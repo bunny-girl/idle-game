@@ -24,8 +24,8 @@ const mutations = {
     currentSkill.mastery += currentSkill.masteryAddition;
   },
 
-  setCurrentSkill(state, skillId) {
-    state.current = skillId;
+  setCurrentSkill(state, payload) {
+    state.current = payload.skillId;
     currentSkill = state.skills.find(item => item.id === state.current);
   },
 

@@ -1,13 +1,12 @@
 <template>
-  <div :class="isCurrent ? 'currentSkill' : ''" @click="setCurrentSkill(skill.id)">
-    <div class="popover" v-show="isLocked"></div>
+  <div :class="isCurrent ? 'currentSkill' : ''" @click="activateSkill()">
+    <!--<div class="popover" v-show="isLocked"></div>-->
     <el-row align="middle" type="flex">
       <el-col :span="3">
         <!--<icon-play v-show="isCurrent"></icon-play>-->
         <i class="el-icon-refresh" v-show="isCurrent"></i>
-        <!--<i class="el-icon-delete" v-show="isLocked"></i>-->
+        <i class="el-icon-delete" v-show="isLocked"></i>
         <span>{{skill.name}}</span>
-        <!--<span>{{isLocked}}</span>-->
       </el-col>
       <el-col :span="19">
         <el-progress
@@ -70,8 +69,6 @@
           }
         }
         abilityLocked = !abilityLocked;
-        console.log(coinLocked);
-        console.log(abilityLocked);
         return coinLocked || abilityLocked;
       },
       skill() {
@@ -86,12 +83,14 @@
       }
     },
     methods: {
-      ...mapMutations([
-        'setCurrentSkill'
-      ]),
       ...mapActions([
         'upgradeSkill'
-      ])
+      ]),
+      activateSkill(){
+        if(!this.isLocked){
+          this.$store.commit('setCurrentSkill', {skillId : this.skill.id})
+        }
+      }
     }
   }
 </script>
