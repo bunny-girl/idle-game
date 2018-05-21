@@ -6,6 +6,9 @@
     <li>
       Click : + {{click}}
     </li>
+    <li>
+      Time : {{time.year}} 年 {{time.day}} 天
+    </li>
   </ul>
 </template>
 
@@ -18,6 +21,7 @@
       ...mapGetters([
         'auto',
         'click',
+        'time',
       ])
     },
     created() {

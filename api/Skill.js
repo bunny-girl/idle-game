@@ -1,5 +1,7 @@
 import Ability from './Abilily'
 
+import _skill_data from '../data/skill';
+
 const _skills = [
   {
     id: '001',
@@ -17,81 +19,6 @@ const _skills = [
     mastery: 0,
   }
 ];
-
-const _skill_data = {
-  '001': {
-    name: '送餐员',
-    abilities: [
-      '001', '002',
-    ],
-    data: [
-      {
-        max: 5,
-        addition: 0,
-        multi: 0,
-        cost: 5,
-        title: '骑手'
-      },
-      {
-        max: -1,
-        addition: 2,
-        multi: 0.1,
-        title: '优秀骑手'
-      },
-    ],
-    unlock: {},
-  },
-  '002': {
-    name: '早餐店',
-    abilities: [
-      '003'
-    ],
-    data: [
-      {
-        max: 5,
-        addition: 0,
-        multi: 0,
-        cost: 20,
-        title: '新手'
-      },
-      {
-        max: -1,
-        addition: 2,
-        multi: 0.1,
-        title: '入门'
-      }
-    ],
-    unlock: {},
-  },
-  '003': {
-    name: '餐厅',
-    abilities: [
-      '003'
-    ],
-    data: [
-      {
-        max: 5,
-        addition: 0,
-        multi: 0,
-        cost: 20,
-        title: '新手'
-      },
-      {
-        max: -1,
-        addition: 2,
-        multi: 0.1,
-        title: '入门'
-      }
-    ],
-    unlock: {
-      ability : {
-        '003' : {
-          level : 2
-        }
-      }
-    },
-  },
-};
 
 let currentSkills;
 

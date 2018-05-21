@@ -16,7 +16,7 @@
           <el-tab-pane label="属性">
             <ability-status></ability-status>
           </el-tab-pane>
-          <el-tab-pane label="公司">
+          <el-tab-pane label="培训">
             建设中
           </el-tab-pane>
         </el-tabs>
