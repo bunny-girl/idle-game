@@ -48,22 +48,6 @@ const getSkills = () => {
   return currentSkills;
 };
 
-const getSkillPower = () => {
-  let res = {
-    addition: 0,
-    multi: 0,
-  };
-
-  currentSkills.map(({addition, multi}) => {
-    res.addition += parseInt(addition) || 0;
-    res.multi += parseInt(multi) || 0;
-  });
-  return res;
-};
-
-const initData = (data, cb) => {
-};
-
 const upgrade = (skills, current) => {
   syncSkill(skills);
   let currentSkill = skills.find(({id}) => id === current);
@@ -83,8 +67,6 @@ const syncSkill = (skills) => {
 
 export default {
   getSkills,
-  initData,
   upgrade,
-  getSkillPower,
   syncSkill,
 }

@@ -44,7 +44,7 @@
     created() {
       this.$store.commit('updateSkills');
       this.$store.commit('updateAbilities');
-      this.$store.commit('updatePower');
+      // this.$store.commit('updatePower');
     }
   }
 </script>

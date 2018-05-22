@@ -1,10 +1,10 @@
 <template>
   <ul>
     <li>
-      Auto : + {{auto}}
+      <!--Auto : + {{auto}}-->
     </li>
     <li>
-      Click : + {{click}}
+      Click : + {{power.click}}
     </li>
     <li>
       Time : {{time.year}} 年 {{time.day}} 天
@@ -19,8 +19,7 @@
     name: 'Status',
     computed: {
       ...mapGetters([
-        'auto',
-        'click',
+        'power',
         'time',
       ])
     },

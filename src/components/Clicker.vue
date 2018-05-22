@@ -22,19 +22,19 @@
     name: 'Clicker',
     data() {
       return {
-        isAuto: false
+        isAuto: false,
+        auto : 1,
       }
     },
     computed: {
       ...
         mapGetters([
           'click',
-          'auto',
         ])
     },
     methods: {
       click_action() {
-        this.$store.commit('clicker_action');
+        this.$store.dispatch('clicker_action');
         this.$store.dispatch('addMasteryForAbility');
         this.$store.dispatch('addMasteryForSkill');
       },
@@ -48,7 +48,7 @@
         }
       },
       autoInc() {
-        this.$store.commit('clicker_action_auto');
+        this.$store.dispatch('clicker_action_auto');
         this.$store.dispatch('addMasteryForAbilityAuto');
         this.$store.dispatch('addMasteryForSkillAuto');
       }

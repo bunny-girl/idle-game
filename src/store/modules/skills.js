@@ -2,7 +2,7 @@ import Skill from '../../../api/Skill'
 
 let currentSkill, masteryAddition;
 
-const AUTO_FACTOR = 0.1;
+const BASE = 1, AUTO_FACTOR = 0.1;
 
 const state = {
   skills: [],
@@ -12,6 +12,28 @@ const state = {
 const getters = {
   skillList: state => state.skills,
   currentSkillId: state => state.current,
+  skillPower: (state) => {
+    let res = {
+      addition: 0,
+      multi: 0,
+    };
+
+    state.skills.map(({addition, multi}) => {
+      res.addition += parseInt(addition) || 0;
+      res.multi += parseInt(multi) || 0;
+    });
+    return res;
+  },
+  power: (state, getters) => {
+    let skillPower = getters.skillPower;
+    console.log(skillPower);
+    let click = (BASE + skillPower.addition) * (1 + skillPower.multi);
+    let auto = Math.round(AUTO_FACTOR * click * 100) / 100;
+    return {
+      click,
+      auto,
+    };
+  }
 };
 
 const mutations = {
@@ -37,7 +59,7 @@ const mutations = {
 
 const actions = {
   addMasteryForSkill({commit, state}) {
-    if(!currentSkill.readyForUpgrade){
+    if (!currentSkill.readyForUpgrade) {
       commit('addMasteryForSkill');
 
       if (currentSkill.max > 0 && currentSkill.mastery >= currentSkill.max) {
@@ -46,20 +68,20 @@ const actions = {
     }
   },
 
-  updateSkills({commit, state}){
+  updateSkills({commit, state}) {
     Skill.syncSkill(state.skills);
     commit('updateSkills');
   },
 
   addMasteryForSkillAuto({commit, state, dispatch}) {
-    if(Math.random() < AUTO_FACTOR){
+    if (Math.random() < AUTO_FACTOR) {
       dispatch('addMasteryForSkill');
-    }else{
+    } else {
       //do nothing.
     }
   },
 
-  upgradeSkill({commit, state}, skill){
+  upgradeSkill({commit, state}, skill) {
     commit('costCoins', skill.cost);
     Skill.upgrade(state.skills, skill.id);
     commit('updateSkills');

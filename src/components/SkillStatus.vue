@@ -3,12 +3,27 @@
     <!--<div class="popover" v-show="isLocked"></div>-->
     <el-row align="middle" type="flex">
       <el-col :span="3">
-        <!--<icon-play v-show="isCurrent"></icon-play>-->
         <i class="el-icon-refresh" v-show="isCurrent"></i>
         <i class="el-icon-delete" v-show="isLocked"></i>
         <span>{{skill.name}}</span>
       </el-col>
-      <el-col :span="19">
+      <el-col :span="2">
+        [Lv. {{skill.level}}]
+      </el-col>
+      <el-col :span="4">
+        {{skill.mastery}} / {{skill.max}}
+      </el-col>
+      <el-col :span="4">
+        <el-button
+          type="primary"
+          size="mini"
+          v-show="skill.readyForUpgrade"
+          @click="upgradeSkill(skill)"
+          :disabled="skill.cost > coin">
+          进阶({{skill.cost}})
+        </el-button>
+      </el-col>
+      <el-col :span="11">
         <el-progress
           :percentage="percentage"
           :show-text="false"
@@ -16,25 +31,11 @@
           style="vertical-align: center"
           :status="skill.readyForUpgrade ? 'success' : ''"></el-progress>
       </el-col>
-      <el-col :span="2">
-        <el-button
-          type="primary"
-          icon="el-icon-caret-top"
-          size="mini"
-          v-show="skill.readyForUpgrade"
-          @click="upgradeSkill(skill)"
-          :disabled="skill.cost > coin">
-        </el-button>
-      </el-col>
     </el-row>
-    <p>
-      [{{skill.title}}] : {{skill.mastery}} / {{skill.max}}
-    </p>
     <p>
       <ability-tag :ability-id="ability" v-for="ability in skill.abilities" :key="ability"></ability-tag>
       <span>合计 {{skill.masteryAddition}} 点熟练度加成。</span>
     </p>
-    <!--<button>Upgrade - {{skill.cost}}-->
     <hr>
   </div>
 </template>
