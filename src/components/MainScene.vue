@@ -1,13 +1,13 @@
 <template>
   <el-row>
-    <el-col :span="12">
+    <el-col :span="6">
       <div class="grid-content bg-purple">
         <Coin></Coin>
         <Clicker></Clicker>
         <status></status>
       </div>
     </el-col>
-    <el-col :span="12">
+    <el-col :span="18">
       <div class="grid-content bg-purple-light">
         <el-tabs type="border-card">
           <el-tab-pane label="技能">
@@ -17,7 +17,7 @@
             <ability-status></ability-status>
           </el-tab-pane>
           <el-tab-pane label="培训">
-            建设中
+            <training></training>
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -31,6 +31,7 @@
   import SkillPanel from './SkillPanel.vue'
   import Status from './Status.vue'
   import AbilityStatus from './AbilityStatus.vue'
+  import Training from './Training'
 
   export default {
     name: 'HelloWorld',
@@ -40,6 +41,7 @@
       SkillPanel,
       Status,
       AbilityStatus,
+      Training,
     },
     created() {
       this.$store.commit('updateSkills');

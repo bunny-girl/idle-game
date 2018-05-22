@@ -28,27 +28,29 @@ const mutations = {
 };
 
 const actions = {
+  addMasteryForAbilityCore({state, commit, dispatch}, skills){
+    let shallUpgrade = false;
+    state.abilities.forEach(a => {
+      if (skills.abilities.includes(a.id)) {
+        a.mastery += skills.level + 1;
+
+        if (a.mastery >= a.max) {
+          shallUpgrade = true;
+        }
+      }
+    });
+    if (shallUpgrade) {
+      Ability.upgrade(state.abilities);
+      commit('updateAbilities');
+      dispatch('updateSkills');
+    }
+  },
   addMasteryForAbility({state, commit, rootState, dispatch}) {
     let {skills, current} = rootState.skills;
     let {level, abilities, readyForUpgrade} = skills.find(item => item.id === current) || {level: 0, abilityId: []};
 
     if (readyForUpgrade === false) {
-
-      let shallUpgrade = false;
-      state.abilities.forEach(a => {
-        if (abilities.includes(a.id)) {
-          a.mastery += level + 1;
-
-          if (a.mastery >= a.max) {
-            shallUpgrade = true;
-          }
-        }
-      });
-      if (shallUpgrade) {
-        Ability.upgrade(state.abilities);
-        commit('updateAbilities');
-        dispatch('updateSkills');
-      }
+      dispatch('addMasteryForAbilityCore', {level, abilities})
     }
   },
   addMasteryForAbilityAuto({dispatch}) {
@@ -57,7 +59,10 @@ const actions = {
     } else {
       //do nothing.
     }
-  }
+  },
+  training({dispatch}){
+    dispatch('addMasteryForAbilityCore')
+  },
 };
 
 export default {
