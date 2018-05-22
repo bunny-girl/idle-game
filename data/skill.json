@@ -1,75 +1,1164 @@
 {
-  "001": {
-    "name": "送餐员",
+  "s001": {
+    "name": "群演",
     "abilities": [
-      "001",
-      "002"
+      "a001"
     ],
+    "unlock": {
+      "ability": {},
+      "skill": {},
+      "coin": 0
+    },
+    "rank": "1",
     "data": [
       {
-        "max": 5,
-        "addition": 0,
-        "multi": 0,
-        "cost": 5,
-        "title": "骑手"
+        "id": "s001",
+        "level": "1",
+        "rank": "1",
+        "max": "15",
+        "addition": "0",
+        "multi": "0",
+        "cost": "5",
+        "title": "新手",
+        "name": "群演"
       },
       {
-        "max": -1,
-        "addition": 2,
-        "multi": 0.1,
-        "title": "优秀骑手"
+        "id": "s001",
+        "level": "2",
+        "rank": "1",
+        "max": "75",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "72",
+        "title": "入门",
+        "name": "群演"
+      },
+      {
+        "id": "s001",
+        "level": "3",
+        "rank": "1",
+        "max": "375",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "609",
+        "title": "初级",
+        "name": "群演"
+      },
+      {
+        "id": "s001",
+        "level": "4",
+        "rank": "1",
+        "max": "1875",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "4910",
+        "title": "中级",
+        "name": "群演"
+      },
+      {
+        "id": "s001",
+        "level": "5",
+        "rank": "1",
+        "max": "9375",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "39317",
+        "title": "高级",
+        "name": "群演"
       }
-    ],
-    "unlock": {}
+    ]
   },
-  "002": {
-    "name": "早餐店",
+  "s002": {
+    "name": "替身演员",
     "abilities": [
-      "003"
+      "a001"
     ],
+    "unlock": {
+      "ability": {},
+      "skill": {
+        "s001": {
+          "level": "3"
+        }
+      },
+      "coin": 0
+    },
+    "rank": "2",
     "data": [
       {
-        "max": 5,
-        "addition": 0,
-        "multi": 0,
-        "cost": 20,
-        "title": "新手"
+        "id": "s002",
+        "level": "1",
+        "rank": "2",
+        "max": "18",
+        "addition": "0",
+        "multi": "0",
+        "cost": "7",
+        "title": "新手",
+        "name": "替身演员"
       },
       {
-        "max": -1,
-        "addition": 2,
-        "multi": 0.1,
-        "title": "入门"
+        "id": "s002",
+        "level": "2",
+        "rank": "2",
+        "max": "90",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "87",
+        "title": "入门",
+        "name": "替身演员"
+      },
+      {
+        "id": "s002",
+        "level": "3",
+        "rank": "2",
+        "max": "450",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "732",
+        "title": "初级",
+        "name": "替身演员"
+      },
+      {
+        "id": "s002",
+        "level": "4",
+        "rank": "2",
+        "max": "2250",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "5893",
+        "title": "中级",
+        "name": "替身演员"
+      },
+      {
+        "id": "s002",
+        "level": "5",
+        "rank": "2",
+        "max": "11250",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "47181",
+        "title": "高级",
+        "name": "替身演员"
+      },
+      {
+        "id": "s002",
+        "level": "6",
+        "rank": "2",
+        "max": "56250",
+        "addition": "5",
+        "multi": "0.5",
+        "cost": "377482",
+        "title": "专业",
+        "name": "替身演员"
+      },
+      {
+        "id": "s002",
+        "level": "7",
+        "rank": "2",
+        "max": "281250",
+        "addition": "6",
+        "multi": "0.6",
+        "cost": "3019894",
+        "title": "大师",
+        "name": "替身演员"
       }
-    ],
-    "unlock": {}
+    ]
   },
-  "003": {
-    "name": "餐厅",
+  "s003": {
+    "name": "配角",
     "abilities": [
-      "003"
-    ],
-    "data": [
-      {
-        "max": 5,
-        "addition": 0,
-        "multi": 0,
-        "cost": 20,
-        "title": "新手"
-      },
-      {
-        "max": -1,
-        "addition": 2,
-        "multi": 0.1,
-        "title": "入门"
-      }
+      "a001",
+      "a002"
     ],
     "unlock": {
       "ability": {
-        "003": {
-          "level": 2
+        "a002": {
+          "level": "4"
         }
+      },
+      "skill": {
+        "s002": {
+          "level": "5"
+        }
+      },
+      "coin": 0
+    },
+    "rank": "3",
+    "data": [
+      {
+        "id": "s003",
+        "level": "1",
+        "rank": "3",
+        "max": "23",
+        "addition": "0",
+        "multi": "0",
+        "cost": "9",
+        "title": "新手",
+        "name": "配角"
+      },
+      {
+        "id": "s003",
+        "level": "2",
+        "rank": "3",
+        "max": "113",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "110",
+        "title": "入门",
+        "name": "配角"
+      },
+      {
+        "id": "s003",
+        "level": "3",
+        "rank": "3",
+        "max": "563",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "917",
+        "title": "初级",
+        "name": "配角"
+      },
+      {
+        "id": "s003",
+        "level": "4",
+        "rank": "3",
+        "max": "2813",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "7368",
+        "title": "中级",
+        "name": "配角"
+      },
+      {
+        "id": "s003",
+        "level": "5",
+        "rank": "3",
+        "max": "14063",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "58977",
+        "title": "高级",
+        "name": "配角"
+      },
+      {
+        "id": "s003",
+        "level": "6",
+        "rank": "3",
+        "max": "70313",
+        "addition": "5",
+        "multi": "0.5",
+        "cost": "471854",
+        "title": "专业",
+        "name": "配角"
+      },
+      {
+        "id": "s003",
+        "level": "7",
+        "rank": "3",
+        "max": "351563",
+        "addition": "6",
+        "multi": "0.6",
+        "cost": "3774869",
+        "title": "大师",
+        "name": "配角"
+      },
+      {
+        "id": "s003",
+        "level": "8",
+        "rank": "3",
+        "max": "1757813",
+        "addition": "7",
+        "multi": "0.7",
+        "cost": "30198984",
+        "title": "宗师",
+        "name": "配角"
+      },
+      {
+        "id": "s003",
+        "level": "9",
+        "rank": "3",
+        "max": "8789063",
+        "addition": "8",
+        "multi": "0.8",
+        "cost": "241591905",
+        "title": "禅师",
+        "name": "配角"
       }
-    }
+    ]
+  },
+  "s004": {
+    "name": "混混",
+    "abilities": [
+      "a003"
+    ],
+    "unlock": {
+      "ability": {},
+      "skill": {},
+      "coin": 0
+    },
+    "rank": "1",
+    "data": [
+      {
+        "id": "s004",
+        "level": "1",
+        "rank": "1",
+        "max": "15",
+        "addition": "0",
+        "multi": "0",
+        "cost": "5",
+        "title": "新手",
+        "name": "混混"
+      },
+      {
+        "id": "s004",
+        "level": "2",
+        "rank": "1",
+        "max": "75",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "72",
+        "title": "入门",
+        "name": "混混"
+      },
+      {
+        "id": "s004",
+        "level": "3",
+        "rank": "1",
+        "max": "375",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "609",
+        "title": "初级",
+        "name": "混混"
+      },
+      {
+        "id": "s004",
+        "level": "4",
+        "rank": "1",
+        "max": "1875",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "4910",
+        "title": "中级",
+        "name": "混混"
+      },
+      {
+        "id": "s004",
+        "level": "5",
+        "rank": "1",
+        "max": "9375",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "39317",
+        "title": "高级",
+        "name": "混混"
+      }
+    ]
+  },
+  "s005": {
+    "name": "马仔",
+    "abilities": [
+      "a003",
+      "a004"
+    ],
+    "unlock": {
+      "ability": {
+        "a003": {
+          "level": "4"
+        }
+      },
+      "skill": {
+        "s004": {
+          "level": "3"
+        }
+      },
+      "coin": 0
+    },
+    "rank": "2",
+    "data": [
+      {
+        "id": "s005",
+        "level": "1",
+        "rank": "2",
+        "max": "18",
+        "addition": "0",
+        "multi": "0",
+        "cost": "7",
+        "title": "新手",
+        "name": "马仔"
+      },
+      {
+        "id": "s005",
+        "level": "2",
+        "rank": "2",
+        "max": "90",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "87",
+        "title": "入门",
+        "name": "马仔"
+      },
+      {
+        "id": "s005",
+        "level": "3",
+        "rank": "2",
+        "max": "450",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "732",
+        "title": "初级",
+        "name": "马仔"
+      },
+      {
+        "id": "s005",
+        "level": "4",
+        "rank": "2",
+        "max": "2250",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "5893",
+        "title": "中级",
+        "name": "马仔"
+      },
+      {
+        "id": "s005",
+        "level": "5",
+        "rank": "2",
+        "max": "11250",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "47181",
+        "title": "高级",
+        "name": "马仔"
+      },
+      {
+        "id": "s005",
+        "level": "6",
+        "rank": "2",
+        "max": "56250",
+        "addition": "5",
+        "multi": "0.5",
+        "cost": "377482",
+        "title": "专业",
+        "name": "马仔"
+      },
+      {
+        "id": "s005",
+        "level": "7",
+        "rank": "2",
+        "max": "281250",
+        "addition": "6",
+        "multi": "0.6",
+        "cost": "3019894",
+        "title": "大师",
+        "name": "马仔"
+      }
+    ]
+  },
+  "s006": {
+    "name": "打手",
+    "abilities": [
+      "a003",
+      "a004"
+    ],
+    "unlock": {
+      "ability": {},
+      "skill": {
+        "s005": {
+          "level": "5"
+        }
+      },
+      "coin": 0
+    },
+    "rank": "3",
+    "data": [
+      {
+        "id": "s006",
+        "level": "1",
+        "rank": "3",
+        "max": "23",
+        "addition": "0",
+        "multi": "0",
+        "cost": "9",
+        "title": "新手",
+        "name": "打手"
+      },
+      {
+        "id": "s006",
+        "level": "2",
+        "rank": "3",
+        "max": "113",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "110",
+        "title": "入门",
+        "name": "打手"
+      },
+      {
+        "id": "s006",
+        "level": "3",
+        "rank": "3",
+        "max": "563",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "917",
+        "title": "初级",
+        "name": "打手"
+      },
+      {
+        "id": "s006",
+        "level": "4",
+        "rank": "3",
+        "max": "2813",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "7368",
+        "title": "中级",
+        "name": "打手"
+      },
+      {
+        "id": "s006",
+        "level": "5",
+        "rank": "3",
+        "max": "14063",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "58977",
+        "title": "高级",
+        "name": "打手"
+      },
+      {
+        "id": "s006",
+        "level": "6",
+        "rank": "3",
+        "max": "70313",
+        "addition": "5",
+        "multi": "0.5",
+        "cost": "471854",
+        "title": "专业",
+        "name": "打手"
+      },
+      {
+        "id": "s006",
+        "level": "7",
+        "rank": "3",
+        "max": "351563",
+        "addition": "6",
+        "multi": "0.6",
+        "cost": "3774869",
+        "title": "大师",
+        "name": "打手"
+      },
+      {
+        "id": "s006",
+        "level": "8",
+        "rank": "3",
+        "max": "1757813",
+        "addition": "7",
+        "multi": "0.7",
+        "cost": "30198984",
+        "title": "宗师",
+        "name": "打手"
+      },
+      {
+        "id": "s006",
+        "level": "9",
+        "rank": "3",
+        "max": "8789063",
+        "addition": "8",
+        "multi": "0.8",
+        "cost": "241591905",
+        "title": "禅师",
+        "name": "打手"
+      }
+    ]
+  },
+  "s007": {
+    "name": "短工",
+    "abilities": [
+      "a005"
+    ],
+    "unlock": {
+      "ability": {},
+      "skill": {},
+      "coin": 0
+    },
+    "rank": "1",
+    "data": [
+      {
+        "id": "s007",
+        "level": "1",
+        "rank": "1",
+        "max": "15",
+        "addition": "0",
+        "multi": "0",
+        "cost": "5",
+        "title": "新手",
+        "name": "短工"
+      },
+      {
+        "id": "s007",
+        "level": "2",
+        "rank": "1",
+        "max": "75",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "72",
+        "title": "入门",
+        "name": "短工"
+      },
+      {
+        "id": "s007",
+        "level": "3",
+        "rank": "1",
+        "max": "375",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "609",
+        "title": "初级",
+        "name": "短工"
+      },
+      {
+        "id": "s007",
+        "level": "4",
+        "rank": "1",
+        "max": "1875",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "4910",
+        "title": "中级",
+        "name": "短工"
+      },
+      {
+        "id": "s007",
+        "level": "5",
+        "rank": "1",
+        "max": "9375",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "39317",
+        "title": "高级",
+        "name": "短工"
+      }
+    ]
+  },
+  "s008": {
+    "name": "工人",
+    "abilities": [
+      "a005"
+    ],
+    "unlock": {
+      "ability": {},
+      "skill": {
+        "s007": {
+          "level": "3"
+        }
+      },
+      "coin": 0
+    },
+    "rank": "2",
+    "data": [
+      {
+        "id": "s008",
+        "level": "1",
+        "rank": "2",
+        "max": "18",
+        "addition": "0",
+        "multi": "0",
+        "cost": "7",
+        "title": "新手",
+        "name": "工人"
+      },
+      {
+        "id": "s008",
+        "level": "2",
+        "rank": "2",
+        "max": "90",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "87",
+        "title": "入门",
+        "name": "工人"
+      },
+      {
+        "id": "s008",
+        "level": "3",
+        "rank": "2",
+        "max": "450",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "732",
+        "title": "初级",
+        "name": "工人"
+      },
+      {
+        "id": "s008",
+        "level": "4",
+        "rank": "2",
+        "max": "2250",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "5893",
+        "title": "中级",
+        "name": "工人"
+      },
+      {
+        "id": "s008",
+        "level": "5",
+        "rank": "2",
+        "max": "11250",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "47181",
+        "title": "高级",
+        "name": "工人"
+      },
+      {
+        "id": "s008",
+        "level": "6",
+        "rank": "2",
+        "max": "56250",
+        "addition": "5",
+        "multi": "0.5",
+        "cost": "377482",
+        "title": "专业",
+        "name": "工人"
+      },
+      {
+        "id": "s008",
+        "level": "7",
+        "rank": "2",
+        "max": "281250",
+        "addition": "6",
+        "multi": "0.6",
+        "cost": "3019894",
+        "title": "大师",
+        "name": "工人"
+      }
+    ]
+  },
+  "s009": {
+    "name": "小贩",
+    "abilities": [
+      "a006"
+    ],
+    "unlock": {
+      "ability": {},
+      "skill": {},
+      "coin": 200
+    },
+    "rank": "2",
+    "data": [
+      {
+        "id": "s009",
+        "level": "1",
+        "rank": "2",
+        "max": "18",
+        "addition": "0",
+        "multi": "0",
+        "cost": "7",
+        "title": "新手",
+        "name": "小贩"
+      },
+      {
+        "id": "s009",
+        "level": "2",
+        "rank": "2",
+        "max": "90",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "87",
+        "title": "入门",
+        "name": "小贩"
+      },
+      {
+        "id": "s009",
+        "level": "3",
+        "rank": "2",
+        "max": "450",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "732",
+        "title": "初级",
+        "name": "小贩"
+      },
+      {
+        "id": "s009",
+        "level": "4",
+        "rank": "2",
+        "max": "2250",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "5893",
+        "title": "中级",
+        "name": "小贩"
+      },
+      {
+        "id": "s009",
+        "level": "5",
+        "rank": "2",
+        "max": "11250",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "47181",
+        "title": "高级",
+        "name": "小贩"
+      },
+      {
+        "id": "s009",
+        "level": "6",
+        "rank": "2",
+        "max": "56250",
+        "addition": "5",
+        "multi": "0.5",
+        "cost": "377482",
+        "title": "专业",
+        "name": "小贩"
+      },
+      {
+        "id": "s009",
+        "level": "7",
+        "rank": "2",
+        "max": "281250",
+        "addition": "6",
+        "multi": "0.6",
+        "cost": "3019894",
+        "title": "大师",
+        "name": "小贩"
+      }
+    ]
+  },
+  "s010": {
+    "name": "销售员",
+    "abilities": [
+      "a006",
+      "a007"
+    ],
+    "unlock": {
+      "ability": {
+        "a006": {
+          "level": "4"
+        }
+      },
+      "skill": {
+        "s009": {
+          "level": "5"
+        }
+      },
+      "coin": 0
+    },
+    "rank": "3",
+    "data": [
+      {
+        "id": "s010",
+        "level": "1",
+        "rank": "3",
+        "max": "23",
+        "addition": "0",
+        "multi": "0",
+        "cost": "9",
+        "title": "新手",
+        "name": "销售员"
+      },
+      {
+        "id": "s010",
+        "level": "2",
+        "rank": "3",
+        "max": "113",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "110",
+        "title": "入门",
+        "name": "销售员"
+      },
+      {
+        "id": "s010",
+        "level": "3",
+        "rank": "3",
+        "max": "563",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "917",
+        "title": "初级",
+        "name": "销售员"
+      },
+      {
+        "id": "s010",
+        "level": "4",
+        "rank": "3",
+        "max": "2813",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "7368",
+        "title": "中级",
+        "name": "销售员"
+      },
+      {
+        "id": "s010",
+        "level": "5",
+        "rank": "3",
+        "max": "14063",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "58977",
+        "title": "高级",
+        "name": "销售员"
+      },
+      {
+        "id": "s010",
+        "level": "6",
+        "rank": "3",
+        "max": "70313",
+        "addition": "5",
+        "multi": "0.5",
+        "cost": "471854",
+        "title": "专业",
+        "name": "销售员"
+      },
+      {
+        "id": "s010",
+        "level": "7",
+        "rank": "3",
+        "max": "351563",
+        "addition": "6",
+        "multi": "0.6",
+        "cost": "3774869",
+        "title": "大师",
+        "name": "销售员"
+      },
+      {
+        "id": "s010",
+        "level": "8",
+        "rank": "3",
+        "max": "1757813",
+        "addition": "7",
+        "multi": "0.7",
+        "cost": "30198984",
+        "title": "宗师",
+        "name": "销售员"
+      },
+      {
+        "id": "s010",
+        "level": "9",
+        "rank": "3",
+        "max": "8789063",
+        "addition": "8",
+        "multi": "0.8",
+        "cost": "241591905",
+        "title": "禅师",
+        "name": "销售员"
+      }
+    ]
+  },
+  "s011": {
+    "name": "餐点摊贩",
+    "abilities": [
+      "a008"
+    ],
+    "unlock": {
+      "ability": {},
+      "skill": {},
+      "coin": 500
+    },
+    "rank": "2",
+    "data": [
+      {
+        "id": "s011",
+        "level": "1",
+        "rank": "2",
+        "max": "18",
+        "addition": "0",
+        "multi": "0",
+        "cost": "7",
+        "title": "新手",
+        "name": "餐点摊贩"
+      },
+      {
+        "id": "s011",
+        "level": "2",
+        "rank": "2",
+        "max": "90",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "87",
+        "title": "入门",
+        "name": "餐点摊贩"
+      },
+      {
+        "id": "s011",
+        "level": "3",
+        "rank": "2",
+        "max": "450",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "732",
+        "title": "初级",
+        "name": "餐点摊贩"
+      },
+      {
+        "id": "s011",
+        "level": "4",
+        "rank": "2",
+        "max": "2250",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "5893",
+        "title": "中级",
+        "name": "餐点摊贩"
+      },
+      {
+        "id": "s011",
+        "level": "5",
+        "rank": "2",
+        "max": "11250",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "47181",
+        "title": "高级",
+        "name": "餐点摊贩"
+      },
+      {
+        "id": "s011",
+        "level": "6",
+        "rank": "2",
+        "max": "56250",
+        "addition": "5",
+        "multi": "0.5",
+        "cost": "377482",
+        "title": "专业",
+        "name": "餐点摊贩"
+      },
+      {
+        "id": "s011",
+        "level": "7",
+        "rank": "2",
+        "max": "281250",
+        "addition": "6",
+        "multi": "0.6",
+        "cost": "3019894",
+        "title": "大师",
+        "name": "餐点摊贩"
+      }
+    ]
+  },
+  "s012": {
+    "name": "厨师",
+    "abilities": [
+      "a008"
+    ],
+    "unlock": {
+      "ability": {
+        "a008": {
+          "level": "4"
+        }
+      },
+      "skill": {
+        "s011": {
+          "level": "5"
+        }
+      },
+      "coin": 0
+    },
+    "rank": "3",
+    "data": [
+      {
+        "id": "s012",
+        "level": "1",
+        "rank": "3",
+        "max": "23",
+        "addition": "0",
+        "multi": "0",
+        "cost": "9",
+        "title": "新手",
+        "name": "厨师"
+      },
+      {
+        "id": "s012",
+        "level": "2",
+        "rank": "3",
+        "max": "113",
+        "addition": "1",
+        "multi": "0.1",
+        "cost": "110",
+        "title": "入门",
+        "name": "厨师"
+      },
+      {
+        "id": "s012",
+        "level": "3",
+        "rank": "3",
+        "max": "563",
+        "addition": "2",
+        "multi": "0.2",
+        "cost": "917",
+        "title": "初级",
+        "name": "厨师"
+      },
+      {
+        "id": "s012",
+        "level": "4",
+        "rank": "3",
+        "max": "2813",
+        "addition": "3",
+        "multi": "0.3",
+        "cost": "7368",
+        "title": "中级",
+        "name": "厨师"
+      },
+      {
+        "id": "s012",
+        "level": "5",
+        "rank": "3",
+        "max": "14063",
+        "addition": "4",
+        "multi": "0.4",
+        "cost": "58977",
+        "title": "高级",
+        "name": "厨师"
+      },
+      {
+        "id": "s012",
+        "level": "6",
+        "rank": "3",
+        "max": "70313",
+        "addition": "5",
+        "multi": "0.5",
+        "cost": "471854",
+        "title": "专业",
+        "name": "厨师"
+      },
+      {
+        "id": "s012",
+        "level": "7",
+        "rank": "3",
+        "max": "351563",
+        "addition": "6",
+        "multi": "0.6",
+        "cost": "3774869",
+        "title": "大师",
+        "name": "厨师"
+      },
+      {
+        "id": "s012",
+        "level": "8",
+        "rank": "3",
+        "max": "1757813",
+        "addition": "7",
+        "multi": "0.7",
+        "cost": "30198984",
+        "title": "宗师",
+        "name": "厨师"
+      },
+      {
+        "id": "s012",
+        "level": "9",
+        "rank": "3",
+        "max": "8789063",
+        "addition": "8",
+        "multi": "0.8",
+        "cost": "241591905",
+        "title": "禅师",
+        "name": "厨师"
+      }
+    ]
   }
 }

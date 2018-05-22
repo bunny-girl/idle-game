@@ -20,7 +20,7 @@ const mutations = {
 };
 
 const actions = {
-  addMasteryForAbility({state, commit, rootState}) {
+  addMasteryForAbility({state, commit, rootState, dispatch}) {
     let {skills, current} = rootState.skills;
     let {level, abilities, readyForUpgrade} = skills.find(item => item.id === current) || {level: 0, abilityId: []};
 
@@ -39,6 +39,7 @@ const actions = {
       if (shallUpgrade) {
         Ability.upgrade(state.abilities);
         commit('updateAbilities');
+        dispatch('updateSkills');
       }
     }
   },

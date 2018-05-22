@@ -1,48 +1,20 @@
-const _ability = [
-  {
-    id: '001',
-    level: 0,
-    mastery: 0,
-  },
-  {
-    id: '002',
-    level: 0,
-    mastery: 0,
-  },
-  {
-    id: '003',
-    level: 0,
-    mastery: 0,
-  },
-  {
-    id: '004',
-    level: 0,
-    mastery: 0,
-  },
-  {
-    id: '005',
-    level: 0,
-    mastery: 0,
-  }
-];
+import _ability_data from '../data/ability.json'
 
-const _ability_data = {
-  '001': {
-    name: '驾驶'
-  },
-  '002': {
-    name: '守时'
-  },
-  '003': {
-    name: '细心'
-  },
-  '004': {
-    name: '厨艺'
-  },
-  '005': {
-    name: 'Ability 03'
-  },
+let _ability = [];
+
+const createDefault = () => {
+  for(let prop in _ability_data){
+    if(_ability_data.hasOwnProperty(prop)){
+      _ability.push({
+        id: prop,
+        level: 0,
+        mastery: 0,
+      })
+    }
+  }
 };
+
+createDefault();
 
 const getAbilityDetail = abilityArr => {
   let res = {
@@ -77,8 +49,6 @@ const upgrade = (abilities) => {
   _ability.forEach(a => {
     let tempAbility = abilities.find(({id}) => id === a.id);
     a.mastery = tempAbility.mastery;
-    console.log(a.mastery);
-    console.log(tempAbility.max);
     if(a.mastery >= tempAbility.max){
       a.mastery -= tempAbility.max;
       a.level = tempAbility.level + 1;

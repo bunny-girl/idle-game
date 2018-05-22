@@ -2,23 +2,21 @@ import Ability from './Abilily'
 
 import _skill_data from '../data/skill';
 
-const _skills = [
-  {
-    id: '001',
-    level: 0,
-    mastery: 0,
-  },
-  {
-    id: '002',
-    level: 0,
-    mastery: 0,
-  },
-  {
-    id: '003',
-    level: 0,
-    mastery: 0,
+const _skills = [];
+
+const createDefault = () => {
+  for(let prop in _skill_data){
+    if(_skill_data.hasOwnProperty(prop)){
+      _skills.push({
+        id: prop,
+        level: 0,
+        mastery: 0,
+      })
+    }
   }
-];
+};
+
+createDefault();
 
 let currentSkills;
 
@@ -67,11 +65,7 @@ const initData = (data, cb) => {
 };
 
 const upgrade = (skills, current) => {
-  _skills.forEach(skill => {
-    let tempSkill = skills.find(({id}) => id === skill.id);
-    skill.mastery = tempSkill.mastery;
-    skill.level = tempSkill.level;
-  });
+  syncSkill(skills);
   let currentSkill = skills.find(({id}) => id === current);
   let currentSkillState = _skills.find(({id}) => id === current);
   currentSkill.mastery -= currentSkill.max;
@@ -79,9 +73,18 @@ const upgrade = (skills, current) => {
   currentSkillState.level++;
 };
 
+const syncSkill = (skills) => {
+  _skills.forEach(skill => {
+    let tempSkill = skills.find(({id}) => id === skill.id);
+    skill.mastery = tempSkill.mastery;
+    skill.level = tempSkill.level;
+  });
+}
+
 export default {
   getSkills,
   initData,
   upgrade,
   getSkillPower,
+  syncSkill,
 }

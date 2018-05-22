@@ -14,6 +14,7 @@
     "element-ui": "^2.3.8",
     "lodash": "^4.17.10",
     "ls-sl": "git+https://github.com/bunny-girl/ls-sl.git",
+    "papaparse": "^4.4.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

@@ -1,5 +1,5 @@
 <template>
-  <div :class="isCurrent ? 'currentSkill' : ''" @click="activateSkill()">
+  <div :class="isCurrent ? 'currentSkill' : ''" @click="activateSkill()" v-show="!isLocked">
     <!--<div class="popover" v-show="isLocked"></div>-->
     <el-row align="middle" type="flex">
       <el-col :span="3">
@@ -32,7 +32,7 @@
     </p>
     <p>
       <ability-tag :ability-id="ability" v-for="ability in skill.abilities" :key="ability"></ability-tag>
-      <!--<span>合计 {{skill.masteryAddition}} 点熟练度加成。</span>-->
+      <span>合计 {{skill.masteryAddition}} 点熟练度加成。</span>
     </p>
     <!--<button>Upgrade - {{skill.cost}}-->
     <hr>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-  import {mapActions, mapGetters, mapMutations} from 'vuex'
+  import {mapActions, mapGetters} from 'vuex'
   import AbilityTag from './AbilityTag'
   import {IconPlay} from '@vuikit/icons'
 
@@ -54,22 +54,36 @@
           currentSkill: 'currentSkillId',
           coin: 'coins',
           abilities: 'abilities',
+          skills : 'skillList',
         }),
       isLocked() {
-        let coinLocked = (this.skill.unlock.coin && this.skill.unlock.coin < this.coin);
+        let coinLocked = (this.skill.unlock.coin && this.skill.unlock.coin > this.coin);
+
         let abilityLocked = true;
         let tempAbilityData = this.skill.unlock.ability;
         if (tempAbilityData) {
           for (let a in tempAbilityData) {
             if (tempAbilityData.hasOwnProperty(a)) {
               let temp = this.abilities.find(_a => _a.id === a);
-              // console.log(abilityLocked);
               abilityLocked = abilityLocked && temp && temp.level >= tempAbilityData[a].level;
             }
           }
         }
         abilityLocked = !abilityLocked;
-        return coinLocked || abilityLocked;
+
+        let skillLocked = true;
+        let tempSkillData = this.skill.unlock.skill;
+        if (tempSkillData) {
+          for (let a in tempSkillData) {
+            if (tempSkillData.hasOwnProperty(a)) {
+              let temp = this.skills.find(_a => _a.id === a);
+              skillLocked = skillLocked && temp && temp.level >= tempSkillData[a].level;
+            }
+          }
+        }
+        skillLocked = !skillLocked;
+
+        return coinLocked || abilityLocked || skillLocked;
       },
       skill() {
         return this.skillData;
@@ -79,16 +93,17 @@
       },
       percentage() {
         let tempData = this.skill;
-        return tempData.max > 0 ? Math.round(tempData.mastery / tempData.max * 100) : 100;
+        // console.log(Math.round(tempData.mastery / tempData.max * 100));
+        return tempData.max > 0 ? Math.min(Math.round(tempData.mastery / tempData.max * 100), 100) : 100;
       }
     },
     methods: {
       ...mapActions([
         'upgradeSkill'
       ]),
-      activateSkill(){
-        if(!this.isLocked){
-          this.$store.commit('setCurrentSkill', {skillId : this.skill.id})
+      activateSkill() {
+        if (!this.isLocked) {
+          this.$store.commit('setCurrentSkill', {skillId: this.skill.id})
         }
       }
     }
@@ -103,7 +118,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
     z-index: 100;
   }
 </style>

@@ -6,7 +6,7 @@ const AUTO_FACTOR = 0.1;
 
 const state = {
   skills: [],
-  current: '001',
+  current: 's001',
 };
 
 const getters = {
@@ -22,6 +22,7 @@ const mutations = {
 
   addMasteryForSkill(state) {
     currentSkill.mastery += currentSkill.masteryAddition;
+    currentSkill.mastery = Math.min(currentSkill.mastery, currentSkill.max);
   },
 
   setCurrentSkill(state, payload) {
@@ -43,6 +44,11 @@ const actions = {
         commit('couldUpgrade');
       }
     }
+  },
+
+  updateSkills({commit, state}){
+    Skill.syncSkill(state.skills);
+    commit('updateSkills');
   },
 
   addMasteryForSkillAuto({commit, state, dispatch}) {
