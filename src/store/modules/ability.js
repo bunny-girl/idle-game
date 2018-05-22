@@ -4,7 +4,7 @@ const state = {
   abilities: [],
 };
 
-const AUTO_FACTOR = 0.1;
+const AUTO_FACTOR = 0.2;
 
 const getters = {
   abilities: state => state.abilities,

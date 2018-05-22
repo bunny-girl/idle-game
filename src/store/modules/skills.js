@@ -2,7 +2,7 @@ import Skill from '../../../api/Skill'
 
 let currentSkill, masteryAddition;
 
-const BASE = 1, AUTO_FACTOR = 0.1;
+const BASE = 1, AUTO_FACTOR = 0.2;
 
 const state = {
   skills: [],

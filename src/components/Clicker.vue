@@ -5,7 +5,7 @@
       style="display: block"
       v-model="isAuto"
       active-color="#13ce66"
-      :disabled="power.auto<0.1"
+      :disabled="power.auto<0.5"
       active-text="开启"
       @change="checkStatus"
       inactive-text="关闭">

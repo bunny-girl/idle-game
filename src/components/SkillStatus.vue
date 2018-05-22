@@ -43,11 +43,10 @@
 <script>
   import {mapActions, mapGetters} from 'vuex'
   import AbilityTag from './AbilityTag'
-  import {IconPlay} from '@vuikit/icons'
 
   export default {
     name: 'SkillStatus',
-    components: {AbilityTag, IconPlay},
+    components: {AbilityTag},
     props: ['skill-data'],
     computed: {
       ...
