@@ -10,6 +10,14 @@ const getters = {
   abilities: state => state.abilities,
   getAbilityById: (state) => (id) => {
     return state.abilities.find(a => a.id === id)
+  },
+  getMasterySumByArr : (state) => (arr) => {
+    let sum = 1;
+    arr.map(item => {
+      let current = state.abilities.find(data => data.id === item);
+      sum += current.level;
+    });
+    return sum;
   }
 };
 

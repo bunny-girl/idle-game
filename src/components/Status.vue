@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li>
-      <!--Auto : + {{auto}}-->
+      Auto : + {{power.auto}}
     </li>
     <li>
       Click : + {{power.click}}

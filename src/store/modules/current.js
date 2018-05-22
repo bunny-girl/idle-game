@@ -1,5 +1,3 @@
-import Status from '../../../api/Status';
-
 const state = {
   coin: 0,
   days: 0,

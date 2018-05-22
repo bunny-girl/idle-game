@@ -12,6 +12,9 @@ const state = {
 const getters = {
   skillList: state => state.skills,
   currentSkillId: state => state.current,
+  currentSkill : state => {
+    state.skills.find(item => item.id === state.current)
+  },
   skillPower: (state) => {
     let res = {
       addition: 0,
@@ -22,13 +25,14 @@ const getters = {
       res.addition += parseInt(addition) || 0;
       res.multi += parseInt(multi) || 0;
     });
+
     return res;
   },
   power: (state, getters) => {
     let skillPower = getters.skillPower;
-    console.log(skillPower);
     let click = (BASE + skillPower.addition) * (1 + skillPower.multi);
     let auto = Math.round(AUTO_FACTOR * click * 100) / 100;
+
     return {
       click,
       auto,
@@ -85,7 +89,6 @@ const actions = {
     commit('costCoins', skill.cost);
     Skill.upgrade(state.skills, skill.id);
     commit('updateSkills');
-    commit('updatePower');
   }
 };
 

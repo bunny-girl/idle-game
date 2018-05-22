@@ -34,7 +34,7 @@
     </el-row>
     <p>
       <ability-tag :ability-id="ability" v-for="ability in skill.abilities" :key="ability"></ability-tag>
-      <span>合计 {{skill.masteryAddition}} 点熟练度加成。</span>
+      <span>合计 {{mastery}} 点熟练度加成。</span>
     </p>
     <hr>
   </div>
@@ -57,6 +57,9 @@
           abilities: 'abilities',
           skills : 'skillList',
         }),
+      mastery() {
+        return this.$store.getters.getMasterySumByArr(this.skill.abilities);
+      },
       isLocked() {
         let coinLocked = (this.skill.unlock.coin && this.skill.unlock.coin > this.coin);
 
@@ -94,7 +97,6 @@
       },
       percentage() {
         let tempData = this.skill;
-        // console.log(Math.round(tempData.mastery / tempData.max * 100));
         return tempData.max > 0 ? Math.min(Math.round(tempData.mastery / tempData.max * 100), 100) : 100;
       }
     },
