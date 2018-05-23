@@ -76,7 +76,6 @@ const mutations = {
   },
 
   upgradeSkills(state, {id, max}) {
-    console.log(id);
     let current = state._skill.find(item => item.id === id);
     current.mastery -= max;
     current.level++;

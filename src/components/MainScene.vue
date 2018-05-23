@@ -55,7 +55,7 @@
     },
     created() {
       // this.$store.commit('updateSkills');
-      this.$store.commit('updateAbilities');
+      // this.$store.commit('updateAbilities');
       this.$store.dispatch('loadGame');
     }
   }

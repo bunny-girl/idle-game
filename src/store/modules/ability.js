@@ -1,20 +1,34 @@
-import Ability from '../../../api/Abilily'
+import _ability_data from '../../../data/ability.json'
 
 const state = {
+  _abilities: [],
   abilities: [],
 };
 
 const AUTO_FACTOR = 0.2;
 
 const getters = {
-  abilities: state => state.abilities,
-  getAbilityById: (state) => (id) => {
-    return state.abilities.find(a => a.id === id)
+  abilities: state => {
+    return state._abilities.map(a => {
+      let {name} = _ability_data[a.id];
+      return {
+        id: a.id,
+        name,
+        level: a.level,
+        mastery: a.mastery,
+        max: Math.pow(10, a.level + 1)
+      }
+    })
   },
-  getMasterySumByArr : (state) => (arr) => {
+
+  getAbilityById: (state, getters) => (id) => {
+    return getters.abilities.find(a => a.id === id)
+  },
+
+  getMasterySumByArr: (state, getters) => (arr) => {
     let sum = 1;
     arr.map(item => {
-      let current = state.abilities.find(data => data.id === item);
+      let current = getters.abilities.find(data => data.id === item);
       sum += current.level;
     });
     return sum;
@@ -22,26 +36,49 @@ const getters = {
 };
 
 const mutations = {
-  updateAbilities(state) {
-    state.abilities = Ability.getAbilities();
+  loadAbilities(state) {
+    for (let prop in _ability_data) {
+      if (_ability_data.hasOwnProperty(prop)) {
+        state._abilities.push({
+          id: prop,
+          level: 0,
+          mastery: 0,
+        })
+      }
+    }
   },
+
+  upgradeAbilities(state, upgradeArr) {
+    upgradeArr.forEach(up => {
+      let current = state._abilities.find(({id}) => id === up.id);
+      current.mastery -= up.max;
+      current.level++;
+    });
+  },
+
+  addMasteryForAbility(state, {id, mastery}) {
+    let current = state._abilities.find(item => item.id === id);
+    current.mastery += mastery;
+  }
 };
 
 const actions = {
-  addMasteryForAbilityCore({state, commit, dispatch}, skills){
-    let shallUpgrade = false;
-    state.abilities.forEach(a => {
+  addMasteryForAbilityCore({state, commit, dispatch, getters}, skills) {
+    let upgradeArr = [];
+    getters.abilities.forEach(a => {
       if (skills.abilities.includes(a.id)) {
-        a.mastery += skills.level + 1;
+        commit('addMasteryForAbility', {id: a.id, mastery: skills.level + 1});
 
         if (a.mastery >= a.max) {
-          shallUpgrade = true;
+          upgradeArr.push({
+            id: a.id,
+            max: a.max
+          })
         }
       }
     });
-    if (shallUpgrade) {
-      Ability.upgrade(state.abilities);
-      commit('updateAbilities');
+    if (upgradeArr.length > 0) {
+      commit('upgradeAbilities', upgradeArr);
     }
   },
   addMasteryForAbility({state, commit, rootGetters, rootState, dispatch}) {
@@ -61,7 +98,7 @@ const actions = {
       //do nothing.
     }
   },
-  training({dispatch}){
+  training({dispatch}) {
     dispatch('addMasteryForAbilityCore')
   },
 };
