@@ -47,6 +47,7 @@ const mutations = {
   },
 
   addMasteryForSkill(state) {
+
     currentSkill.mastery += currentSkill.masteryAddition;
     currentSkill.mastery = Math.min(currentSkill.mastery, currentSkill.max);
   },
@@ -62,7 +63,8 @@ const mutations = {
 };
 
 const actions = {
-  addMasteryForSkill({commit, state}) {
+  addMasteryForSkill({commit, state, rootGetters}) {
+    // console.log(rootGetters.getMasterySumByArr(currentSkill.abilities));
     if (!currentSkill.readyForUpgrade) {
       commit('addMasteryForSkill');
 

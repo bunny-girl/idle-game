@@ -4,7 +4,7 @@ export default {
   save(val) {
     ls.save('idle_data', val)
   },
-  get() {
+  load() {
     console.log(ls.load('idle_data'))
   }
 }

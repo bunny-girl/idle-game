@@ -11,10 +11,16 @@ import VuikitIcons from '@vuikit/icons'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+import * as filters from './plugin/filter';
+
 Vue.use(ElementUI);
 Vue.use(VuikitIcons);
 
 Vue.use(Vuex);
+
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+});
 
 Vue.config.productionTip = false;
 
@@ -23,6 +29,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: {App},
   template: '<App/>'
 });

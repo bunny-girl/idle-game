@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import skills from './modules/skills'
 import current from './modules/current'
 import ability from './modules/ability'
-import saveloader from '../plugin/saveloader'
+import Helper from 'ls-sl'
 
 Vue.use(Vuex);
 
@@ -13,5 +13,11 @@ export default new Vuex.Store({
     current,
     ability,
   },
-  plugins:[saveloader]
+  // plugins:[saveloader],
+  actions:{
+    loadGame({state}){
+      console.log(state);
+      console.log(Helper.load('idle_data'))
+    }
+  }
 })

@@ -56,7 +56,7 @@
     created() {
       this.$store.commit('updateSkills');
       this.$store.commit('updateAbilities');
-      // this.$store.commit('updatePower');
+      this.$store.dispatch('loadGame');
     }
   }
 </script>

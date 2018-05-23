@@ -7,7 +7,7 @@
       Click : + {{power.manual}}
     </li>
     <li>
-      Time : {{time.year}} 年 {{time.day}} 天
+      Time : {{days | yearFromDays}}
     </li>
   </ul>
 </template>
@@ -20,7 +20,7 @@
     computed: {
       ...mapGetters([
         'power',
-        'time',
+        'days',
       ])
     },
     created() {
