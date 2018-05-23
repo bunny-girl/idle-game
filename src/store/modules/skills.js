@@ -1,27 +1,49 @@
-import Skill from '../../../api/Skill'
-
-let currentSkill, masteryAddition;
+import _skill_data from '../../../data/skill';
 
 const BASE = 1, AUTO_FACTOR = 0.2;
 
 const state = {
-  skills: [],
+  _skill: [],
   current: 's001',
 };
 
 const getters = {
-  skillList: state => state.skills,
-  currentSkillId: state => state.current,
-  currentSkill : state => {
-    state.skills.find(item => item.id === state.current)
+  skills: (state) => {
+    return state._skill.map(s => {
+      let cloned;
+      let {name, data, abilities, unlock} = _skill_data[s.id];
+      let levelData = data[s.level];
+
+      cloned = {
+        id: s.id,
+        level: s.level,
+        mastery: s.mastery,
+        name,
+        max: levelData.max,
+        addition: levelData.addition,
+        multi: levelData.multi,
+        title: levelData.title,
+        cost: levelData.cost,
+        abilities,
+        unlock,
+        readyForUpgrade: function () {
+          return this.mastery >= this.max && this.max > 0
+        }
+      };
+      return cloned;
+    });
   },
-  skillPower: (state) => {
+  currentSkillId: state => state.current,
+  currentSkill: (state, getters) => {
+    return getters.skills.find(item => item.id === state.current)
+  },
+  skillPower: (state, getters) => {
     let res = {
       addition: 0,
       multi: 0,
     };
 
-    state.skills.map(({addition, multi}) => {
+    getters.skills.map(({addition, multi}) => {
       res.addition += parseInt(addition) || 0;
       res.multi += parseInt(multi) || 0;
     });
@@ -41,42 +63,43 @@ const getters = {
 };
 
 const mutations = {
-  updateSkills(state) {
-    state.skills = Skill.getSkills();
-    currentSkill = state.skills.find(item => item.id === state.current);
-  },
-
-  addMasteryForSkill(state) {
-
-    currentSkill.mastery += currentSkill.masteryAddition;
-    currentSkill.mastery = Math.min(currentSkill.mastery, currentSkill.max);
-  },
-
-  setCurrentSkill(state, payload) {
-    state.current = payload.skillId;
-    currentSkill = state.skills.find(item => item.id === state.current);
-  },
-
-  couldUpgrade(state) {
-    currentSkill.readyForUpgrade = true;
-  }
-};
-
-const actions = {
-  addMasteryForSkill({commit, state, rootGetters}) {
-    // console.log(rootGetters.getMasterySumByArr(currentSkill.abilities));
-    if (!currentSkill.readyForUpgrade) {
-      commit('addMasteryForSkill');
-
-      if (currentSkill.max > 0 && currentSkill.mastery >= currentSkill.max) {
-        commit('couldUpgrade');
+  loadSkills(state) {
+    for (let prop in _skill_data) {
+      if (_skill_data.hasOwnProperty(prop)) {
+        state._skill.push({
+          id: prop,
+          level: 0,
+          mastery: 0,
+        })
       }
     }
   },
 
-  updateSkills({commit, state}) {
-    Skill.syncSkill(state.skills);
-    commit('updateSkills');
+  upgradeSkills(state, {id, max}) {
+    console.log(id);
+    let current = state._skill.find(item => item.id === id);
+    current.mastery -= max;
+    current.level++;
+  },
+
+  addMasteryForSkill(state, mastery) {
+    let current = state._skill.find(item => item.id === state.current);
+    current.mastery += mastery;
+  },
+
+  setCurrentSkill(state, payload) {
+    state.current = payload.skillId;
+  }
+};
+
+const actions = {
+  addMasteryForSkill({commit, state, getters, rootGetters}) {
+    let current = getters.currentSkill;
+    if (!current.readyForUpgrade()) {
+      let mastery = rootGetters.getMasterySumByArr(current.abilities);
+      mastery = Math.min(mastery, current.max - current.mastery);
+      commit('addMasteryForSkill', mastery);
+    }
   },
 
   addMasteryForSkillAuto({commit, state, dispatch}) {
@@ -89,8 +112,10 @@ const actions = {
 
   upgradeSkill({commit, state}, skill) {
     commit('costCoins', skill.cost);
-    Skill.upgrade(state.skills, skill.id);
-    commit('updateSkills');
+    commit('upgradeSkills', {
+      id: skill.id,
+      max: skill.max
+    })
   }
 };
 

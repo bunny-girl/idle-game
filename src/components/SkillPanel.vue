@@ -13,9 +13,7 @@
     components: {SkillStatus},
     computed: {
       ...
-        mapGetters({
-          skills: 'skillList',
-        }),
+        mapGetters(['skills']),
     }
   }
 </script>

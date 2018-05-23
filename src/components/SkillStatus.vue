@@ -17,7 +17,7 @@
         <el-button
           type="primary"
           size="mini"
-          v-show="skill.readyForUpgrade"
+          v-show="skill.readyForUpgrade()"
           @click="upgradeSkill(skill)"
           :disabled="skill.cost > coin">
           进阶({{skill.cost}})
@@ -29,7 +29,7 @@
           :show-text="false"
           :stroke-width="11"
           style="vertical-align: center"
-          :status="skill.readyForUpgrade ? 'success' : ''"></el-progress>
+          :status="skill.readyForUpgrade() ? 'success' : ''"></el-progress>
       </el-col>
       <el-col :span="2" v-for="ability in skill.abilities" :key="ability" style="text-align: center">
         <ability-tag :ability-id="ability" ></ability-tag>
@@ -56,7 +56,7 @@
           currentSkill: 'currentSkillId',
           coin: 'coins',
           abilities: 'abilities',
-          skills : 'skillList',
+          skills : 'skills',
         }),
       mastery() {
         return this.$store.getters.getMasterySumByArr(this.skill.abilities);

@@ -42,14 +42,15 @@ const actions = {
     if (shallUpgrade) {
       Ability.upgrade(state.abilities);
       commit('updateAbilities');
-      dispatch('updateSkills');
     }
   },
-  addMasteryForAbility({state, commit, rootState, dispatch}) {
-    let {skills, current} = rootState.skills;
-    let {level, abilities, readyForUpgrade} = skills.find(item => item.id === current) || {level: 0, abilityId: []};
+  addMasteryForAbility({state, commit, rootGetters, rootState, dispatch}) {
+    let {current} = rootState.skills;
+    let skills = rootGetters.skills;
+    let currentSkill = skills.find(item => item.id === current) || {level: 0, abilityId: []};
+    let {level, abilities} = currentSkill;
 
-    if (readyForUpgrade === false) {
+    if (currentSkill.readyForUpgrade() === false) {
       dispatch('addMasteryForAbilityCore', {level, abilities})
     }
   },

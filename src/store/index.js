@@ -15,7 +15,8 @@ export default new Vuex.Store({
   },
   // plugins:[saveloader],
   actions:{
-    loadGame({state}){
+    loadGame({state, dispatch, commit}){
+      commit('loadSkills');
       console.log(state);
       console.log(Helper.load('idle_data'))
     }
