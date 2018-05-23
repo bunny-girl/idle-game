@@ -21,7 +21,7 @@
       </el-select>
     </el-col>
     <el-col :span="8">
-      <el-button type="primary">
+      <el-button type="primary" disabled="disabled">
         交钱
       </el-button>
     </el-col>

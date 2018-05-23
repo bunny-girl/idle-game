@@ -30,11 +30,11 @@ const getters = {
   },
   power: (state, getters) => {
     let skillPower = getters.skillPower;
-    let click = (BASE + skillPower.addition) * (1 + skillPower.multi);
-    let auto = Math.round(AUTO_FACTOR * click * 100) / 100;
+    let manual = (BASE + skillPower.addition) * (1 + skillPower.multi);
+    let auto = Math.round(AUTO_FACTOR * manual * 100) / 100;
 
     return {
-      click,
+      manual,
       auto,
     };
   }

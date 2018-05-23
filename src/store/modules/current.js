@@ -1,6 +1,14 @@
 const state = {
   coin: 0,
   days: 0,
+  auto : {
+    coin : 0,
+    days : 0,
+  },
+  manual : {
+    coin : 0,
+    days : 0,
+  },
 };
 
 const getters = {
@@ -18,6 +26,9 @@ const mutations = {
     state.coin += payload.addition;
     state.coin = Math.round(state.coin * 100) / 100;
     state.days += 1;
+
+    state[type].days += 1;
+    state[type].coin += payload.addition;
   },
   costCoins(state, cost) {
     state.coin -= cost;
@@ -25,13 +36,10 @@ const mutations = {
 };
 
 const actions = {
-  clicker_action({state, commit, getters}){
-    let {click : addition} = getters.power;
-    commit('clicker_action', {addition})
-  },
-  clicker_action_auto({state, commit, getters}){
-    let {auto : addition} = getters.power;
-    commit('clicker_action', {addition})
+  clicker_action({state, commit, getters}, isAuto){
+    let type = isAuto ? 'auto' : 'manual';
+    let addition = getters.power[type];
+    commit('clicker_action', {addition, type})
   },
 };
 

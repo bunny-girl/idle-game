@@ -47,7 +47,7 @@
         }
       },
       autoInc() {
-        this.$store.dispatch('clicker_action_auto');
+        this.$store.dispatch('clicker_action', true);
         this.$store.dispatch('addMasteryForAbilityAuto');
         this.$store.dispatch('addMasteryForSkillAuto');
       }
