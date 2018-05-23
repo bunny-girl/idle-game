@@ -41,6 +41,8 @@
   import AchievementPanel from './AchievementPanel'
   import Statics from './Statics'
 
+  let autoSaver;
+
   export default {
     name: 'HelloWorld',
     components: {
@@ -54,9 +56,18 @@
       AchievementPanel,
     },
     created() {
-      // this.$store.commit('updateSkills');
-      // this.$store.commit('updateAbilities');
       this.$store.dispatch('loadGame');
+      this.saveGame();
+    },
+    methods: {
+      saveGame() {
+        autoSaver = setInterval(() => {
+          this.autoSave()
+        }, 10000);
+      },
+      autoSave() {
+        this.$store.dispatch('saveGame');
+      }
     }
   }
 </script>

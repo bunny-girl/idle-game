@@ -16,10 +16,15 @@ export default new Vuex.Store({
   // plugins:[saveloader],
   actions:{
     loadGame({state, dispatch, commit}){
-      commit('loadSkills');
-      commit('loadAbilities');
-      console.log(state);
-      console.log(Helper.load('idle_data'))
+      let gameData = JSON.parse(Helper.load('idle_data')) || {};
+      commit('loadSkills', gameData.skills);
+      commit('loadAbilities', gameData.ability);
+      commit('loadCurrent', gameData.current);
+    },
+    saveGame({state}){
+      let res = Helper.save("idle_data", state);
+      console.log(res);
+      console.log('Game saved');
     }
   }
 })

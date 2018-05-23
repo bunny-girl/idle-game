@@ -2,7 +2,6 @@ import _ability_data from '../../../data/ability.json'
 
 const state = {
   _abilities: [],
-  abilities: [],
 };
 
 const AUTO_FACTOR = 0.2;
@@ -36,14 +35,22 @@ const getters = {
 };
 
 const mutations = {
-  loadAbilities(state) {
-    for (let prop in _ability_data) {
-      if (_ability_data.hasOwnProperty(prop)) {
-        state._abilities.push({
-          id: prop,
-          level: 0,
-          mastery: 0,
-        })
+  loadAbilities(state, abilities) {
+    if(abilities){
+      for(let prop in state){
+        if(state.hasOwnProperty(prop)){
+          state[prop] = abilities[prop];
+        }
+      }
+    }else{
+      for (let prop in _ability_data) {
+        if (_ability_data.hasOwnProperty(prop)) {
+          state._abilities.push({
+            id: prop,
+            level: 0,
+            mastery: 0,
+          })
+        }
       }
     }
   },

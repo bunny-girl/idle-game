@@ -33,10 +33,13 @@ const getters = {
       return cloned;
     });
   },
+
   currentSkillId: state => state.current,
+
   currentSkill: (state, getters) => {
     return getters.skills.find(item => item.id === state.current)
   },
+
   skillPower: (state, getters) => {
     let res = {
       addition: 0,
@@ -50,6 +53,7 @@ const getters = {
 
     return res;
   },
+
   power: (state, getters) => {
     let skillPower = getters.skillPower;
     let manual = (BASE + skillPower.addition) * (1 + skillPower.multi);
@@ -63,15 +67,25 @@ const getters = {
 };
 
 const mutations = {
-  loadSkills(state) {
-    for (let prop in _skill_data) {
-      if (_skill_data.hasOwnProperty(prop)) {
-        state._skill.push({
-          id: prop,
-          level: 0,
-          mastery: 0,
-        })
+  loadSkills(state, skills) {
+    if (skills) {
+      for(let prop in state){
+        if(state.hasOwnProperty(prop)){
+          state[prop] = skills[prop];
+        }
       }
+    } else {
+      for (let prop in _skill_data) {
+        if (_skill_data.hasOwnProperty(prop)) {
+          state._skill.push({
+            id: prop,
+            level: 0,
+            mastery: 0,
+          })
+        }
+      }
+
+      state.current = state._skill[0].id;
     }
   },
 

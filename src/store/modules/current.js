@@ -19,6 +19,16 @@ const getters = {
 };
 
 const mutations = {
+  loadCurrent(state, current) {
+    if(current){
+      for(let prop in state){
+        if(state.hasOwnProperty(prop)){
+          state[prop] = current[prop];
+        }
+      }
+    }
+  },
+
   clicker_action(state, payload) {
     state.coin += payload.addition;
     state.coin = Math.round(state.coin * 100) / 100;
