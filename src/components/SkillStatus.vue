@@ -62,7 +62,7 @@
         return this.$store.getters.getMasterySumByArr(this.skill.abilities);
       },
       isLocked() {
-        let coinLocked = (this.skill.unlock.coin && this.skill.unlock.coin > this.coin);
+        let coinLocked = (this.skill.mastery <= 0) && (this.skill.unlock.coin) && (this.skill.unlock.coin > this.coin);
 
         let abilityLocked = true;
         let tempAbilityData = this.skill.unlock.ability;

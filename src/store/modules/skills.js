@@ -11,7 +11,7 @@ const getters = {
   skills: (state) => {
     return state._skill.map(s => {
       let cloned;
-      let {name, data, abilities, unlock} = _skill_data[s.id];
+      let {name, data, abilities, unlock, rank} = _skill_data[s.id];
       let levelData = data[s.level];
 
       cloned = {
@@ -26,6 +26,7 @@ const getters = {
         cost: levelData.cost,
         abilities,
         unlock,
+        rank,
         readyForUpgrade: function () {
           return this.mastery >= this.max && this.max > 0
         }
