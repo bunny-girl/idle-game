@@ -2,6 +2,11 @@
   <el-row>
     <el-col :span="6">
       <div class="grid-content bg-purple">
+        <p>
+          <el-button type="primary" @click="clearGame()">
+            重启
+          </el-button>
+        </p>
         <Coin></Coin>
         <Clicker></Clicker>
         <status></status>
@@ -67,6 +72,9 @@
       },
       autoSave() {
         this.$store.dispatch('saveGame');
+      },
+      clearGame(){
+        this.$store.dispatch('clearGame');
       }
     }
   }

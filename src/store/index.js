@@ -7,6 +7,8 @@ import Helper from 'ls-sl'
 
 Vue.use(Vuex);
 
+let res;
+
 export default new Vuex.Store({
   modules:{
     skills,
@@ -25,6 +27,10 @@ export default new Vuex.Store({
       let res = Helper.save("idle_data", state);
       console.log(res);
       console.log('Game saved');
+    },
+    clearGame({}){
+      Helper.clear('idle_data');
+      location.reload();
     }
   }
 })
