@@ -1,5 +1,9 @@
 <template>
-  <div :class="isCurrent ? 'currentSkill' : ''" @click="activateSkill()" v-show="!isLocked">
+  <div
+    :class="isCurrent ? 'currentSkill' : ''"
+    class="skill-status"
+    @click="activateSkill()"
+  >
     <!--<div class="popover" v-show="isLocked"></div>-->
     <el-row align="middle" type="flex">
       <el-col :span="2">
@@ -39,16 +43,20 @@
       </el-col>
     </el-row>
     <hr>
+    <div class="popover" v-show="isLocked">
+      <Requirement :unlock="skill.unlock"></Requirement>
+    </div>
   </div>
 </template>
 
 <script>
   import {mapActions, mapGetters} from 'vuex'
   import AbilityTag from './AbilityTag'
+  import Requirement from './Requirement'
 
   export default {
     name: 'SkillStatus',
-    components: {AbilityTag},
+    components: {AbilityTag, Requirement},
     props: ['skill-data'],
     computed: {
       ...
@@ -66,26 +74,26 @@
 
         let abilityLocked = true;
         let tempAbilityData = this.skill.unlock.ability;
-        if (tempAbilityData) {
-          for (let a in tempAbilityData) {
-            if (tempAbilityData.hasOwnProperty(a)) {
-              let temp = this.abilities.find(_a => _a.id === a);
-              abilityLocked = abilityLocked && temp && temp.level >= tempAbilityData[a].level;
-            }
-          }
-        }
+        tempAbilityData.map(item => {
+          let temp = this.abilities.find(_a => _a.id === item.id);
+          abilityLocked = abilityLocked && temp && temp.level >= item.level;
+        });
+        // if (tempAbilityData) {
+        //   for (let a in tempAbilityData) {
+        //     if (tempAbilityData.hasOwnProperty(a)) {
+        //       let temp = this.abilities.find(_a => _a.id === a);
+        //       abilityLocked = abilityLocked && temp && temp.level >= tempAbilityData[a].level;
+        //     }
+        //   }
+        // }
         abilityLocked = !abilityLocked;
 
         let skillLocked = true;
         let tempSkillData = this.skill.unlock.skill;
-        if (tempSkillData) {
-          for (let a in tempSkillData) {
-            if (tempSkillData.hasOwnProperty(a)) {
-              let temp = this.skills.find(_a => _a.id === a);
-              skillLocked = skillLocked && temp && temp.level >= tempSkillData[a].level;
-            }
-          }
-        }
+        tempSkillData.map(item => {
+          let temp = this.skills.find(_a => _a.id === item.id);
+          skillLocked = skillLocked && temp && temp.level >= item.level;
+        });
         skillLocked = !skillLocked;
 
         return coinLocked || abilityLocked || skillLocked;
@@ -114,15 +122,17 @@
   }
 </script>
 <style>
-  .popover {
-    width: 100%;
-    height: 100%;
+  .skill-status {
+    position: relative;
+  }
+  .skill-status .popover {
+    background: rgba(0, 0, 0, 0.8);
     position: absolute;
+    z-index: 2000;
+    margin: 0;
     top: 0;
     right: 0;
-    left: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 100;
+    left: 0;
   }
 </style>

@@ -6,6 +6,16 @@
     <el-row class="row-fix">
       <el-col :span="9">总收益</el-col>
       <el-col :span="13" :push="2">{{currentStatic['totalCoins']}}</el-col>
+      <el-col :span="9">剩余资产</el-col>
+      <el-col :span="13" :push="2">{{currentStatic['coin']}}</el-col>
+      <el-col :span="9">手工收益</el-col>
+      <el-col :span="13" :push="2">{{currentStatic['manual']['coin']}}</el-col>
+      <el-col :span="9">手工时间</el-col>
+      <el-col :span="13" :push="2">{{currentStatic['manual']['days']}}</el-col>
+      <el-col :span="9">挂机时间</el-col>
+      <el-col :span="13" :push="2">{{currentStatic['auto']['coin']}}</el-col>
+      <el-col :span="9">挂机收益</el-col>
+      <el-col :span="13" :push="2">{{currentStatic['auto']['days']}}</el-col>
     </el-row>
   </div>
 </template>

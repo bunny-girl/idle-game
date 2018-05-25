@@ -18,16 +18,20 @@ let obj = {};
 
 const getLevels = str => {
   if (!str.includes('#')) {
-    return {};
+    return [];
   }
   let arr = str.split(';');
-  let res = {};
+  let res = [];
   arr.map(item => {
     if (!item.includes('#')) {
       return;
     }
     let props = item.split('#');
-    res[props[0]] = {level: props[1]};
+    res.push({
+      id : props[0],
+      level : props[1]
+    })
+      // [props[0]] = {level: props[1]};
   });
   return res;
 };

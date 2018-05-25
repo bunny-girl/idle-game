@@ -35,6 +35,10 @@ const getters = {
     });
   },
 
+  getSkillById : (state, getters) => (id) => {
+    return getters.skills.find(item => item.id === id)
+  },
+
   currentSkillId: state => state.current,
 
   currentSkill: (state, getters) => {

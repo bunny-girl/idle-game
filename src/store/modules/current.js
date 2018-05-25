@@ -48,7 +48,11 @@ const actions = {
   clicker_action({state, commit, getters}, isAuto) {
     let type = isAuto ? 'auto' : 'manual';
     let addition = getters.power[type];
-    commit('clicker_action', {addition, type})
+    commit('clicker_action', {addition, type});
+
+    if(state.days >= 365 * 1){
+      // commit()
+    }
   },
 };
 
