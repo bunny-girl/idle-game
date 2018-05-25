@@ -1,22 +1,26 @@
 <template>
-  <p>
-    <el-button @click="click_action" type="primary" :disabled="isAuto">干活</el-button>
-    <el-switch
-      style="display: block"
-      v-model="isAuto"
-      active-color="#13ce66"
-      :disabled="power.auto<0.5"
-      active-text="开启"
-      @change="checkStatus"
-      inactive-text="关闭">
-    </el-switch>
-  </p>
+    <el-row justify="center" type="flex">
+      <el-col :span="6" class="text-center">
+        <el-button @click="click_action" type="primary" icon="el-icon-time">加班</el-button>
+      </el-col>
+      <!--<el-switch-->
+      <!--v-model="isAuto"-->
+      <!--active-color="#13ce66"-->
+      <!--:disabled="power.auto<0.5"-->
+      <!--active-text="开启"-->
+      <!--@change="checkStatus"-->
+      <!--inactive-text="关闭">-->
+      <!--</el-switch>-->
+    </el-row>
+
+
+
 </template>
 
 <script>
   import {mapGetters} from 'vuex'
 
-  let autoTimer;
+  // let autoTimer;
 
   export default {
     name: 'Clicker',
@@ -37,20 +41,29 @@
         this.$store.dispatch('addMasteryForAbility');
         this.$store.dispatch('addMasteryForSkill');
       },
-      checkStatus() {
-        if (this.isAuto) {
-          autoTimer = setInterval(() => {
-            this.autoInc()
-          }, 1000);
-        } else {
-          clearInterval(autoTimer)
-        }
-      },
+      // checkStatus() {
+      //   if (this.isAuto) {
+      //     autoTimer = setInterval(() => {
+      //       this.autoInc()
+      //     }, 1000);
+      //   } else {
+      //     clearInterval(autoTimer)
+      //   }
+      // },
       autoInc() {
         this.$store.dispatch('clicker_action', true);
         this.$store.dispatch('addMasteryForAbilityAuto');
         this.$store.dispatch('addMasteryForSkillAuto');
       }
-    }
+    },
+    created() {
+      setInterval(() => {
+        this.autoInc()
+      }, 1000);
+    },
   }
 </script>
+<style>
+  .el-col {
+  }
+</style>

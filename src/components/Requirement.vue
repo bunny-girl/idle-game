@@ -2,16 +2,16 @@
   <div>
     需要
     <span v-show="ability.length > 0">
-      <el-tag :type="a.levelRequirement >= a.level ? 'warning' : 'success'" v-for="a in ability" :key="a.id">{{a.name}} {{a.levelRequirement}}</el-tag>
+      <el-tag :type="a.levelRequirement >= a.level ? 'danger' : 'success'" v-for="a in ability" :key="a.id">{{a.name}} {{a.levelRequirement}}</el-tag>
       &nbsp;
     </span>
 
     <span v-show="skill.length > 0">
-      <el-tag :type="a.levelRequirement >= a.level ? 'warning' : 'success'" v-for="a in skill" :key="a.id">{{a.name}} {{a.levelRequirement}}</el-tag>
+      <el-tag :type="a.levelRequirement >= a.level ? 'danger' : 'success'" v-for="a in skill" :key="a.id">{{a.name}} {{a.levelRequirement}}</el-tag>
       &nbsp;
     </span>
 
-    <el-tag v-show="coin>0" type="warning" :v-show="coin > 0">资金 : {{coin}}&nbsp;</el-tag>
+    <el-tag v-show="coin>0" type="danger" :v-show="coin > 0">资金 : {{coin}}&nbsp;</el-tag>
     以解锁
   </div>
 </template>

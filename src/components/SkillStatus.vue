@@ -6,7 +6,7 @@
   >
     <!--<div class="popover" v-show="isLocked"></div>-->
     <el-row align="middle" type="flex">
-      <el-col :span="2">
+      <el-col :span="3">
         <i class="el-icon-refresh" v-show="isCurrent"></i>
         <i class="el-icon-delete" v-show="isLocked"></i>
         <span>{{skill.name}}</span>
@@ -17,7 +17,7 @@
       <el-col :span="2">
         {{skill.mastery}} / {{skill.max}}
       </el-col>
-      <el-col :span="2">
+      <el-col :span="3">
         <el-button
           type="primary"
           size="mini"
@@ -27,7 +27,7 @@
           进阶({{skill.cost}})
         </el-button>
       </el-col>
-      <el-col :span="9">
+      <el-col :span="7">
         <el-progress
           :percentage="percentage"
           :show-text="false"
@@ -126,7 +126,8 @@
     position: relative;
   }
   .skill-status .popover {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
+    padding-left: 1em;
     position: absolute;
     z-index: 2000;
     margin: 0;

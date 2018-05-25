@@ -2,17 +2,11 @@
   <el-row>
     <el-col :span="6">
       <div class="grid-content bg-purple">
-        <p>
-          <el-button type="primary" @click="clearGame()">
-            重启
-          </el-button>
-        </p>
-        <Coin></Coin>
-        <Clicker></Clicker>
         <status></status>
+        <Clicker></Clicker>
       </div>
     </el-col>
-    <el-col :span="18">
+    <el-col :span="17" :push="1">
       <div class="grid-content bg-purple-light">
         <el-tabs type="border-card">
           <el-tab-pane label="技能">
@@ -30,6 +24,9 @@
           <el-tab-pane label="统计">
             <statics></statics>
           </el-tab-pane>
+          <el-tab-pane label="设置">
+            <Option></Option>
+          </el-tab-pane>
         </el-tabs>
       </div>
     </el-col>
@@ -37,7 +34,6 @@
 </template>
 
 <script>
-  import Coin from './Coin.vue'
   import Clicker from './Clicker.vue'
   import SkillPanel from './SkillPanel.vue'
   import Status from './Status.vue'
@@ -45,6 +41,7 @@
   import Training from './Training'
   import AchievementPanel from './AchievementPanel'
   import Statics from './Statics'
+  import Option from './Option'
 
   let autoSaver;
 
@@ -52,13 +49,13 @@
     name: 'HelloWorld',
     components: {
       Statics,
-      Coin,
       Clicker,
       SkillPanel,
       Status,
       AbilityStatus,
       Training,
       AchievementPanel,
+      Option,
     },
     created() {
       this.$store.dispatch('loadGame');
@@ -72,9 +69,6 @@
       },
       autoSave() {
         this.$store.dispatch('saveGame');
-      },
-      clearGame(){
-        this.$store.dispatch('clearGame');
       }
     }
   }

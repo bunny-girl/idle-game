@@ -1,9 +1,16 @@
 <template>
+  <el-button type="primary" @click="clearGame()">
+    重启
+  </el-button>
 </template>
 
 <script>
-  import {mapMutations} from 'vuex'
   export default {
-    name : 'Option',
+    name: 'Option',
+    methods: {
+      clearGame() {
+        this.$store.dispatch('clearGame');
+      }
+    }
   }
 </script>

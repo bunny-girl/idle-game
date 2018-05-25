@@ -32,7 +32,9 @@ const mutations = {
   clicker_action(state, payload) {
     state.coin += payload.addition;
     state.coin = Math.round(state.coin * 100) / 100;
-    state.days += 1;
+    if(payload.type === 'auto'){
+      state.days += 1;
+    }
 
     state.totalCoins += payload.addition;
 
