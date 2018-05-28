@@ -1,6 +1,6 @@
 import _skill_data from '../../../data/skill';
 
-const BASE = 1, AUTO_FACTOR = 0.2;
+const BASE = 1, AUTO_FACTOR = 1, MANUAL_FACTOR = 0.3, AUTO_RATE = 0.3, MANUAL_RATE = 0.3;
 
 const state = {
   _skill: [],
@@ -61,8 +61,9 @@ const getters = {
 
   power: (state, getters) => {
     let skillPower = getters.skillPower;
-    let manual = (BASE + skillPower.addition) * (1 + skillPower.multi);
-    let auto = Math.round(AUTO_FACTOR * manual * 100) / 100;
+    let base = (BASE + skillPower.addition) * (1 + skillPower.multi);
+    let manual = Math.round(MANUAL_FACTOR * base * 100) / 100;
+    let auto = Math.round(AUTO_FACTOR * base * 100) / 100;
 
     return {
       manual,
@@ -121,7 +122,15 @@ const actions = {
   },
 
   addMasteryForSkillAuto({commit, state, dispatch}) {
-    if (Math.random() < AUTO_FACTOR) {
+    if (Math.random() < AUTO_RATE) {
+      dispatch('addMasteryForSkill');
+    } else {
+      //do nothing.
+    }
+  },
+
+  addMasteryForSkillManual({commit, state, dispatch}) {
+    if (Math.random() < MANUAL_RATE) {
       dispatch('addMasteryForSkill');
     } else {
       //do nothing.

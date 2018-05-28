@@ -4,7 +4,7 @@ const state = {
   _abilities: [],
 };
 
-const AUTO_FACTOR = 0.2;
+const AUTO_FACTOR = 0.3, MANUAL_FACTOR = 0.3;
 
 const getters = {
   abilities: state => {
@@ -100,6 +100,13 @@ const actions = {
   },
   addMasteryForAbilityAuto({dispatch}) {
     if (Math.random() < AUTO_FACTOR) {
+      dispatch('addMasteryForAbility');
+    } else {
+      //do nothing.
+    }
+  },
+  addMasteryForAbilityManual({dispatch}) {
+    if (Math.random() < MANUAL_FACTOR) {
       dispatch('addMasteryForAbility');
     } else {
       //do nothing.

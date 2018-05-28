@@ -38,8 +38,8 @@
     methods: {
       click_action() {
         this.$store.dispatch('clicker_action');
-        this.$store.dispatch('addMasteryForAbility');
-        this.$store.dispatch('addMasteryForSkill');
+        this.$store.dispatch('addMasteryForAbilityManual');
+        this.$store.dispatch('addMasteryForSkillManual');
       },
       // checkStatus() {
       //   if (this.isAuto) {

@@ -10,11 +10,13 @@ const state = {
     coin: 0,
     days: 0,
   },
+  name : 'E'
 };
 
 const getters = {
   coins: state => state.coin,
   days: state => state.days,
+  name: state => state.name,
   'currentStatic' :  state => state,
 };
 
@@ -30,11 +32,12 @@ const mutations = {
   },
 
   clicker_action(state, payload) {
-    state.coin += payload.addition;
-    state.coin = Math.round(state.coin * 100) / 100;
     if(payload.type === 'auto'){
       state.days += 1;
     }
+    state.coin += payload.addition;
+    state.coin = Math.round(state.coin * 100) / 100;
+
 
     state.totalCoins += payload.addition;
 

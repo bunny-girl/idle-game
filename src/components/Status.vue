@@ -1,7 +1,17 @@
 <template>
   <div>
     <el-card shadow="always">
-      {{coins}}
+      <el-row>
+        <el-col :span="24">
+          {{name}}
+        </el-col>
+        <el-col :span="24">
+          {{coins}}
+        </el-col>
+        <el-col :span="24">
+          {{days | yearFromDays}}
+        </el-col>
+      </el-row>
     </el-card>
     <el-card shadow="always">
       <el-row>
@@ -46,6 +56,7 @@
       ...mapGetters([
         'power',
         'days',
+        'name',
         'coins',
         'currentSkill',
       ]),
