@@ -1,31 +1,46 @@
 <template>
-  <el-row>
-    <el-col :span="8">
-      <el-select v-model="selectedAbility" placeholder="请选择项目">
-        <el-option
-          v-for="item in options"
-          :key="item.id"
-          :label="item.name"
-          :value="item.id">
-        </el-option>
-      </el-select>
-    </el-col>
-    <el-col :span="8">
-      <el-select v-model="difficulty" placeholder="请选择等级">
-        <el-option
-          v-for="diff in difficulties"
-          :key="diff.val"
-          :label="diff.label"
-          :value="diff.val">
-        </el-option>
-      </el-select>
-    </el-col>
-    <el-col :span="8">
-      <el-button type="primary" disabled="disabled">
-        交钱
-      </el-button>
-    </el-col>
-  </el-row>
+  <div>
+    <el-row>
+      <el-col :span="16"></el-col>
+      <el-col :span="8">
+        <el-button type="primary" disabled="disabled">
+          补课
+        </el-button>
+      </el-col>
+    </el-row>
+    <hr />
+    <el-row>
+      <el-col :span="24">
+        课程列表
+      </el-col>
+      <el-col :span="8">
+        <el-select v-model="selectedAbility" placeholder="请选择项目">
+          <el-option
+            v-for="item in options"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id">
+          </el-option>
+        </el-select>
+      </el-col>
+      <el-col :span="8">
+        <el-select v-model="difficulty" placeholder="请选择等级">
+          <el-option
+            v-for="diff in difficulties"
+            :key="diff.val"
+            :label="diff.label"
+            :value="diff.val">
+          </el-option>
+        </el-select>
+      </el-col>
+      <el-col :span="8">
+        <el-button type="primary" disabled="disabled">
+          交钱
+        </el-button>
+      </el-col>
+    </el-row>
+  </div>
+
 </template>
 
 <script>
@@ -36,7 +51,8 @@
     computed: {
       ...
         mapGetters({
-          'abilities': 'abilities'
+          'abilities': 'abilities',
+          'current' : 'currentTraining'
         }),
       options() {
         return this.abilities

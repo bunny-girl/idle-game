@@ -112,9 +112,6 @@ const actions = {
       //do nothing.
     }
   },
-  training({dispatch}) {
-    dispatch('addMasteryForAbilityCore')
-  },
 };
 
 export default {

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import skills from './modules/skills'
 import current from './modules/current'
 import ability from './modules/ability'
+import training from './modules/training'
 import Helper from 'ls-sl'
 
 Vue.use(Vuex);
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     skills,
     current,
     ability,
+    training,
   },
   // plugins:[saveloader],
   actions:{

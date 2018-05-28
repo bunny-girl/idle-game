@@ -101,9 +101,9 @@ const mutations = {
     current.level++;
   },
 
-  addMasteryForSkill(state, mastery) {
-    let current = state._skill.find(item => item.id === state.current);
-    current.mastery += mastery;
+  addMasteryForSkill(state, skill) {
+    let current = state._skill.find(item => item.id === skill.id);
+    current.mastery += skill.mastery;
   },
 
   setCurrentSkill(state, payload) {
@@ -112,12 +112,19 @@ const mutations = {
 };
 
 const actions = {
-  addMasteryForSkill({commit, state, getters, rootGetters}) {
+  addMasteryForSkillCore({commit, state}, payload){
+    commit('addMasteryForSkill', payload);
+  },
+
+  addMasteryForSkill({commit, state, getters, rootGetters, dispatch}) {
     let current = getters.currentSkill;
     if (!current.readyForUpgrade()) {
       let mastery = rootGetters.getMasterySumByArr(current.abilities);
       mastery = Math.min(mastery, current.max - current.mastery);
-      commit('addMasteryForSkill', mastery);
+      dispatch('addMasteryForSkillCore', {
+        mastery,
+        id : state.current
+      })
     }
   },
 
@@ -143,7 +150,7 @@ const actions = {
       id: skill.id,
       max: skill.max
     })
-  }
+  },
 };
 
 export default {
