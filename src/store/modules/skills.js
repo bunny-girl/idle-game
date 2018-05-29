@@ -35,7 +35,7 @@ const getters = {
     });
   },
 
-  getSkillById : (state, getters) => (id) => {
+  getSkillById: (state, getters) => (id) => {
     return getters.skills.find(item => item.id === id)
   },
 
@@ -75,8 +75,8 @@ const getters = {
 const mutations = {
   loadSkills(state, skills) {
     if (skills) {
-      for(let prop in state){
-        if(state.hasOwnProperty(prop)){
+      for (let prop in state) {
+        if (state.hasOwnProperty(prop)) {
           state[prop] = skills[prop];
         }
       }
@@ -112,18 +112,22 @@ const mutations = {
 };
 
 const actions = {
-  addMasteryForSkillCore({commit, state}, payload){
+  addMasteryForSkillCore({commit, state}, payload) {
     commit('addMasteryForSkill', payload);
   },
 
-  addMasteryForSkill({commit, state, getters, rootGetters, dispatch}) {
-    let current = getters.currentSkill;
+  addMasteryForSkill({commit, state, getters, rootGetters, dispatch}, payload) {
+    let current;
+    current = (payload && payload.id) ? getters.getSkillById(payload.id) : getters.currentSkill;
     if (!current.readyForUpgrade()) {
-      let mastery = rootGetters.getMasterySumByArr(current.abilities);
+      let mastery =
+        (payload && payload.mastery) ?
+          payload.mastery :
+          rootGetters.getMasterySumByArr(current.abilities);
       mastery = Math.min(mastery, current.max - current.mastery);
       dispatch('addMasteryForSkillCore', {
         mastery,
-        id : state.current
+        id: (payload && payload.id) ? payload.id : state.current
       })
     }
   },

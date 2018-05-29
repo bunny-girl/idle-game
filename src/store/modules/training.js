@@ -33,6 +33,7 @@ const state = {
     title :'',
     timeLeft: 0,
   },
+  isStopped : false,
   listRefreshTime: 30,
   trainingList: [],
 };
@@ -86,14 +87,15 @@ const actions = {
   },
 
   registerTrainingItem({state, commit}, item){
+    //todo Confirm;
     commit('registerTrainingItem', item);
   },
 
   train({state, dispatch, commit}) {
-    if (state.current && state.current.id && state.current.type && state.current.level && state.current.timeLeft > 0) {
+    if (state.current && state.current.id && state.current.type && state.current.timeLeft > 0) {
       let mastery = 0;//todo
       if (state.current.type === 'skill') {
-        dispatch('addMasteryForSkillCore', {id: state.current.id, mastery});
+        dispatch('addMasteryForSkill', {id: state.current.id, mastery});
       }
       if (state.current.type === 'ability') {
         dispatch('addMasteryForAbilityCore', {level: mastery, abilities: [state.current.id]});

@@ -52,6 +52,7 @@
       // },
       autoInc() {
         this.$store.dispatch('clicker_action', true);
+        this.$store.dispatch('train');
         this.$store.dispatch('addMasteryForAbilityAuto');
         this.$store.dispatch('addMasteryForSkillAuto');
       }
