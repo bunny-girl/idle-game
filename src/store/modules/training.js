@@ -33,18 +33,18 @@ const state = {
     title :'',
     timeLeft: 0,
   },
-  listRefreshTime: '',
+  listRefreshTime: 30,
   trainingList: [],
 };
 
 const getters = {
-  currentTraining() {
-  },
 };
 
 const mutations = {
+
   train(state) {
     state.current.timeLeft -= 1;
+    state.listRefreshTime -= 1;
   },
 
   finishTraining(state) {
@@ -59,6 +59,7 @@ const mutations = {
 
   getTrainingList(state, list) {
     state.trainingList = list;
+    state.listRefreshTime = 30;
   },
 
   registerTrainingItem(state, item){
@@ -71,6 +72,19 @@ const mutations = {
 };
 
 const actions = {
+  loadTraining({state, dispatch}, training) {
+    if(training){
+      for(let prop in state){
+        if(state.hasOwnProperty(prop)){
+          state[prop] = training[prop];
+        }
+      }
+    }else{
+      dispatch('getTrainingList');
+    }
+    console.log(1);
+  },
+
   registerTrainingItem({state, commit}, item){
     commit('registerTrainingItem', item);
   },
@@ -89,10 +103,15 @@ const actions = {
       if (state.current.timeLeft === 0) {
         commit('finishTraining')
       }
+
+      if (state.listRefreshTime === 0) {
+        dispatch('getTrainingList')
+      }
     }
   },
 
   getTrainingList({state, commit, rootGetters}) {
+    console.log(2);
     let skills = rootGetters.skills;
     let abilities = rootGetters.abilities;
 

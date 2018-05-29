@@ -24,6 +24,7 @@ export default new Vuex.Store({
       commit('loadSkills', gameData.skills);
       commit('loadAbilities', gameData.ability);
       commit('loadCurrent', gameData.current);
+      dispatch('loadTraining', gameData.training);
     },
     saveGame({state}){
       let res = Helper.save("idle_data", state);

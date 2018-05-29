@@ -60,7 +60,9 @@
       }
     },
     created(){
-      this.$store.dispatch('getTrainingList');
+      if(this.$store.state.training.trainingList.length <= 0){
+        this.$store.dispatch('getTrainingList');
+      }
     }
   }
 </script>
