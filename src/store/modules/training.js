@@ -83,11 +83,11 @@ const actions = {
     }else{
       dispatch('getTrainingList');
     }
-    console.log(1);
   },
 
   registerTrainingItem({state, commit}, item){
     //todo Confirm;
+    commit('costCoins', item.cost);
     commit('registerTrainingItem', item);
   },
 
@@ -113,7 +113,6 @@ const actions = {
   },
 
   getTrainingList({state, commit, rootGetters}) {
-    console.log(2);
     let skills = rootGetters.skills;
     let abilities = rootGetters.abilities;
 
