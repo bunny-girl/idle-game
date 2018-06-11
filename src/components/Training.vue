@@ -5,7 +5,7 @@
         {{current && current.title ? current.title + current.timeLeft : "当前没有项目"}}
       </el-col>
       <el-col :span="6">
-        <el-button type="primary" disabled="disabled">
+        <el-button type="primary" :disabled="!(current && current.title)" @click="train()">
           补课
         </el-button>
       </el-col>
@@ -13,11 +13,11 @@
     <hr />
     <el-row>
       <el-col :span="24">
-        课程列表
+        课程列表 (将在{{listRefreshCountDown}}天后刷新)
       </el-col>
       <el-col :span="6" v-for="item in options" :key="item.id">
         <p>
-          {{item.title}} [{{item.cost}}] - {{item.cost <= coins}}
+          {{item.title}} [{{item.cost}}] - {{item.timeLeft}}
         </p>
         <el-button type="primary" :disabled="isDisabled(item)" @click="startTraining(item)">
           交钱
@@ -45,6 +45,10 @@
       current() {
         return this.$store.state.training.current;
       },
+
+      listRefreshCountDown() {
+        return this.$store.state.training.listRefreshTime
+      },
     },
     data() {
       return {
@@ -58,6 +62,9 @@
       },
       isDisabled(item) {
         return this.$store.state.training.current.timeLeft > 0 || item.cost > this.coins
+      },
+      train(){
+        this.$store.dispatch('overTimeTraining');
       },
     },
     created(){
